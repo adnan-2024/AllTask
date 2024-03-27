@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            max-width: 750px;
+            margin: 0 auto;
+            position: relative;
+           
+        }
+       #addrowf{
+  
+    margin-left: 78px;
+       }
+       .adcolumnf{
+       top: 10;
+        position: absolute;
+        right: 70px;
+       }
+
+        td {
+            padding: 20px;
+
+        }
+
+        td:nth-child(odd) {
+
+            background-color: lightblue;
+            color: black;
+        }
+        input{
+            border: none;
+            
+        }
+        .buttongreen{
+            padding: 2px 6px;
+            background-color: turquoise;
+            color: white;
+            font-weight: 500;
+        }
+        .buttonred{
+            padding: 2px 6px;
+            background-color: red;
+            color: white;
+            font-weight: 500;
+        }
+    </style>
+    
+</head>
+
+<body onload="window.alert('Page successfully loaded');" onafterprint="onafterprintFunction()">
+    <
+    <table cellpadding="15" border="1" id="table">
+        <h1 style="text-align: center;">JS Events</h1>
+        <tr>
+            <td><input type="text" id="onclickex" onclick="onClickfunc()" placeholder="onclick"></td>
+            <td><input type="text" placeholder="onmouseover" onmouseover="onmouseoverfunc()"></td>
+            <td><input type="text" placeholder="onmouseout" onmouseout="onmouseoutfunc()"></td>
+            <td><input type="text" placeholder="onmousedown" onmousedown="onmousedownfunc()"></td>
+            <td><input type="text" placeholder="onmouseup" onmouseup="onmouseupfunc()"></td>
+
+        </tr>
+        <tr>
+            <td><input type="text" placeholder="onmousemove" onmousemove="onmousemovefunc()"></td>
+            <td><input type="text" placeholder="onkeydown" onkeydown="onkeydownfunc()"></td>
+            <td><input type="text" placeholder="onkeyup" onkeyup="onkeyupfunc()"></td>
+            <td><input type="text" placeholder="onfocus" onfocus="onfocusfunc()"></td>
+            <td><input type="text" placeholder="onblur" onblur="onblurfunc()"></td>
+
+        </tr>
+        <tr>
+            <td><input type="text" placeholder="onChange" onchange="onchangefunc()"></td>
+            <td><input type="text" placeholder="ondoubleclick" ondblclick="ondbclickfunc()"></td>
+            <td><input type="text" placeholder="oninput" oninput="oninputfunc()"></td>
+            <td><input type="text" placeholder="onselect" onselect="onselectfunc()"></td>
+            <td><input type="text" placeholder="oncopy"  id="wheel" "oncopyfunc()"></td>
+            
+        </tr>
+        <tr>
+            
+            <td><input type="text" placeholder="onpaste" onpaste="onpastefunc()"></td>
+            <td><input type="text" placeholder="oncut" oncut="oncutfunc()"></td>
+            <td><input type="text" placeholder="onmousewheel" onmousewheel="onmousewheelfunc()"></td>
+          <td>
+          
+
+<div class="droptarget" ondrop="drop(event)" ondragover="allowDrop(event)">
+  <p ondragstart="dragStart(event)" ondrag="dragging(event)" draggable="true" id="dragtarget">Drag me!</p>
+</div>
+
+<p id="demo"></p>
+
+<div class="droptarget" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+          </td>
+          <td> <input type="text" placeholder="onfocusin" onfocusin="onfocusinfunc(this)"></td>
+
+        </tr>
+
+
+    </table>
+   
+   
+
+
+    <script>
+        function onClickfunc() {
+            alert("Onclick Called");
+        }
+        function onmouseoverfunc() {
+            alert("onmouseover called");
+        }
+        function onmouseoutfunc() {
+            alert("onmouseout called");
+        }
+        function onmousedownfunc() {
+            alert("onmousedown called");
+        }
+        function onmouseupfunc() {
+            alert("onmouseup called");
+        }
+        function onmousemovefunc() {
+            alert("onmousemove called");
+        }
+        function onkeydownfunc() {
+            alert(
+                "onkedown called"
+            )
+        }
+        function onkeyupfunc() {
+            alert("onkeyup called");
+        }
+        function onfocusfunc() {
+            alert("onfocus called called");
+        }
+        function onblurfunc() {
+            alert("on blur called");
+        }
+        function onchangefunc() {
+            alert("onchange called");
+        }
+        function ondbclickfunc() {
+            alert("ondbclicked");
+        }
+        function onafterprintFunction() {
+            alert("Show after print")
+        }
+        function oninputfunc() {
+            alert("InInput called")
+        }
+        function onselectfunc() {
+            alert("onselect is called");
+        }
+        function oncopyfunc() {
+            alert("oncopy called");
+        }
+        function onpastefunc() {
+            alert("onpaste called");
+        }
+        function onmousewheelfunc(){
+            document.getElementById("wheel").style.fontSize = "35px";
+        }
+        function oncutfunc(){
+            alert('You cut the text');
+        }
+        function dragStart(event) {
+  event.dataTransfer.setData("Text", event.target.id);
+}
+
+function dragging(event) {
+  document.getElementById("demo").innerHTML = "The p element is being dragged";
+}
+
+function allowDrop(event) {
+  event.preventDefault();
+}
+function onfocusinfunc(x){
+    x.style.background = "yellow";
+}
+     
+      document.getElementById("addrow").addEventListener("click",()=>{
+    
+        var mytable =  document.getElementById("table");  
+        var rows = mytable.rows.length; 
+        var   cols = mytable.rows[0].cells.length;
+     
+     if(cols==0){
+        
+         alert("kfbwebfjkwebfjkwebfwebfwejbf");
+         var r = mytable.insertRow(0);
+        let newCell = r.insertCell(0);
+            var name = document.createElement("input");  
+            name.type = "text"; 
+            newCell.appendChild(name);
+
+     }
+        var r = mytable.insertRow(-1);
+        for(let i=0;i<cols;i++){
+            let newCell = r.insertCell(i);
+            var name = document.createElement("input");  
+            name.type = "text"; 
+            newCell.appendChild(name);
+            
+        }  
+    });
+       
+    document.getElementById("subrow").addEventListener("click",()=>{
+        
+        var mytable = document.getElementById("table");  
+    var rows = mytable.rows.length; 
+    alert(rows); 
+    var mytable = document.getElementById("table");  
+    var rows = mytable.rows.length;  
+    var   cols = mytable.rows[0].cells.length;
+      if(cols==0){
+          mytable.deleteRow(0);  
+
+      }
+        
+            mytable.deleteRow(rows-1);  
+     
+    });
+   document.getElementById("addcol").addEventListener("click",()=>{
+    var tbl =  document.getElementById("table"); 
+    var   cols = tbl.rows[0].cells.length;
+  tr = tbl.getElementsByTagName("tr");
+  alert(tr.length)
+  for (i = 0; i < cols; i++) {
+
+  var td = document.createElement('td');
+  var input = document.createElement('INPUT');
+  input.type = 'text';
+  td.appendChild(input);
+  tr[i].appendChild(td);
+}
+
+   })
+   document.getElementById("subcol").addEventListener("click",()=>{
+    var tbl = document.getElementById("table");
+    var   cols = tbl.rows[0].cells.length;
+    var rows = tbl.rows.length;
+   tr=tbl.getElementsByTagName("tr");
+    for (i = 0; i < tr.length; i++) {
+
+ tr[i].deleteCell(cols-1);
+
+}
+
+   
+   })
+ 
+  
+    
+        
+        
+        
+    </script>
+</body>
+
+</html>

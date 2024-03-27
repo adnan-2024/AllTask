@@ -14,7 +14,11 @@ router.get("/tic-tac-toe",(req,res)=>{
   res.render("tic-tac-toe")
 })
 router.get("/bubble-sort",(req,res)=>{
-  res.render("Sorting.ejs")
+  res.render("Sorting")
+})
+router.get("/events",(req,res)=>{
+  
+  res.render("events")
 })
 
 
