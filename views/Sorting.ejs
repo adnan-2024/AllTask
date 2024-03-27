@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bubble Sort Task</title>
+    <style>
+       ul{
+
+       }
+       li{
+        list-style:none;
+        display: flex;
+        margin-left: 12px;
+       }
+    </style>
+</head>
+<body>
+    <h1>Bubble Sort Task</h1>
+    <p>
+        Enter Input Like :4,44,15,78
+    </p>
+    
+        <input type="text" name="inputData" id="inputData"/>
+        <input type="submit" value="Sort" onclick="sortInput(event);" />
+
+    <div id="sortResult" class="mt-5" style="display: none;">
+        <h2>Sorted List:</h2>
+        <ul id="sortedValues">
+        </ul>
+    </div>
+    <script>
+    function sortInput() {
+    
+    let inputData = document.getElementById("inputData").value;
+   
+ 
+    let numbers = inputData.split(',').map(Number);
+    let sortedArray = bubbleSort(numbers);
+    displaySortedArray(sortedArray);
+}
+
+function bubbleSort(arr) {
+    const n = arr.length;
+    for (let i = 0; i < n; i++) {
+        for (let j = 1; j < (n - i); j++) {
+            if (arr[j - 1] > arr[j]) {
+                let temp = arr[j];
+                arr[j] = arr[j - 1];
+                arr[j - 1] = temp;
+            }
+        }
+    }
+    return arr;
+}
+
+function displaySortedArray(arr) {
+    let sortedValues = document.getElementById("sortedValues");
+    let valuesHtml = "";
+    for (let i = 0; i < arr.length; i++) {
+        valuesHtml += `<li>${arr[i]}</li>`;
+    }
+    sortedValues.innerHTML = valuesHtml;
+    let sortResult = document.getElementById("sortResult");
+    if (sortResult.style.display === "none") {
+        sortResult.style.display = "block";
+    } else {
+        sortResult.style.display = "none";
+    }
+}
+    </script>
+</body>
+</html>

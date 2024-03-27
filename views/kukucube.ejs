@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            max-width: 750px;
+            max-height: 800px;
+            margin: 0 auto;
+            position: relative;
+           
+        }
+       #addrowf{
+  
+    margin-left: 78px;
+       }
+       .adcolumnf{
+       top: 10;
+        position: absolute;
+        right: 90px;
+       }
+
+        td {
+            padding: 40px;
+            border-radius: 2px solid black;
+
+        }
+
+   
+        input{
+            border: none;
+            
+        }
+        .buttongreen{
+            padding: 2px 6px;
+            background-color: turquoise;
+            color: white;
+            font-weight: 500;
+        }
+        .buttonred{
+            padding: 2px 6px;
+            background-color: red;
+            color: white;
+            font-weight: 500;
+        }
+       
+        button{
+            width: 30px;
+            height: 30px;
+          
+        }
+        
+        
+    </style>
+    
+</head>
+
+<body  onafterprint="onafterprintFunction()">
+    <h2 style="text-align: center;">24DEV055:Adnankhan</h2>
+      <div style="display: flex; align-items: center;">
+          <p>Timer</p>
+          <p id="time">Timer</p>
+             
+      </div>
+      <div style="display: flex; align-items: center;">
+          <p>
+           
+           Score : 
+          </p>
+          <p id="score">
+               0
+            </p>
+           
+
+      </div>
+    
+    <table   cellpadding="15" border="1" id="table">
+      
+        <tr>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+    
+   
+
+
+    <script>
+        window.onload=colorapply;
+        var lowOpacityCell=null;
+        var score=0;
+        let counter = 45;
+        const interval = setInterval(() => {
+    document.getElementById("time").innerHTML=counter;
+    counter--;
+      
+    if (counter < 0 ) {
+      clearInterval(interval);
+      console.log('Ding!');
+    }
+  }, 1000);
+    
+
+
+
+        function startCountdown(seconds) {
+        var tab1=document.getElementById("table");
+        
+  
+        tab1.addEventListener("click", function(event) {
+            if (event.target.tagName === "TD" && event.target === lowOpacityCell) {
+               addingrowandcolumn();
+               score++;
+               var scores=document.getElementById("score");
+                scores.innerHTML=score;
+            }
+        });
+        
+  
+}
+       startCountdown(10)
+        const characters ='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+function generateString(length) {
+    let result = ' ';
+    const charactersLength = characters.length;
+    for ( let i = 0; i < length; i++ ) {
+        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+
+    return result;
+}
+       
+
+
+        function colorapply()
+        {
+       var cells = document.querySelectorAll("td");
+       colors = ['000000','FF0000','00FF00','0000FF','FFFF00','00FFFF','FF00FF','C0C0C0','DFFF00','DE3163','9FE2BF'];
+       let single_color=colors[Math.floor(Math.random() * colors.length)];
+       lowOpacityCell = cells[Math.floor(Math.random() * cells.length)];
+       for(var i = 0; i < cells.length; i++) {
+           cells[i].style.backgroundColor = '#' + single_color;
+        }
+        lowOpacityCell.style.opacity = 0.3;
+       }     
+           
+           
+    
+    
+    
+    function addingrowandcolumn(){
+       if(lowOpacityCell){
+        lowOpacityCell.style.opacity = 1;
+      
+       }    
+       
+        var mytable =  document.getElementById("table");  
+        var  cells= mytable.rows[0].cells.length;
+        var r = mytable.insertRow(-1);
+        var totalrows=mytable.rows.length;
+        if(totalrows>7){
+            alert("Game Over");
+            clearInterval(interval);
+            document.getElementById("time").innerHTML=0;
+            return;
+        }
+        
+        for(let i=0;i<cells;i++){
+            let td=document.createElement("td");
+            r.appendChild(td);
+            
+            
+            
+        } 
+        
+        var rows=mytable.rows.length; 
+        // this is arraylist of all existing row
+        tr = mytable.getElementsByTagName("tr");
+        
+        for (i = 0; i <rows; i++) {
+            var td = document.createElement('td');
+            tr[i].appendChild(td);
+            
+            
+            
+        }
+        
+        colorapply();
+        
+        
+    }
+    
+
+
+        
+        
+        
+        
+    </script>
+</body>
+
+</html>

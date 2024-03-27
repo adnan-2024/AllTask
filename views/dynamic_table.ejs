@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            max-width: 750px;
+            margin: 0 auto;
+            position: relative;
+           
+        }
+       #addrowf{
+  
+    margin-left: 78px;
+       }
+       .adcolumnf{
+       top: 10;
+        position: absolute;
+        right: 90px;
+       }
+
+        td {
+            padding: 40px;
+            border-radius: 2px solid black;
+
+        }
+
+   
+        input{
+            border: none;
+            
+        }
+        .buttongreen{
+            padding: 2px 6px;
+            background-color: turquoise;
+            color: white;
+            font-weight: 500;
+        }
+        .buttonred{
+            padding: 2px 6px;
+            background-color: red;
+            color: white;
+            font-weight: 500;
+        }
+        tr:nth-child(odd)  td:nth-child(odd){
+            background-color: black;
+        }
+        tr:nth-child(even)  td:nth-child(even){
+            background-color: black;
+        }
+        button{
+            width: 30px;
+            height: 30px;
+          
+        }
+    </style>
+    
+</head>
+
+<body onload="window.alert('Page successfully loaded');" onafterprint="onafterprintFunction()">
+    <h2 style="text-align: center;">24DEV055:Adnankhan</h2>
+    <div class="adcolumnf">
+        <button id="addcol"class="buttongreen">+</button> 
+        <button id="subcol" class="buttonred">-</button>
+ 
+    </div>
+    <table cellpadding="15" border="1" id="table">
+        <h1 style="text-align: center;">Dynamic Table</h1>
+        <tr>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+    <div id="addrowf">
+        <button id="addrow" class="buttongreen">+</button> 
+        <button id="subrow" class="buttonred">-</button>
+    </div>
+ 
+   
+
+
+    <script>
+     
+     
+      document.getElementById("addrow").addEventListener("click",()=>{
+       var mytable =  document.getElementById("table");  
+        var  cells= mytable.rows[0].cells.length;
+        var r = mytable.insertRow(-1);
+            for(let i=0;i<cells;i++){
+                let newCell = r.insertCell(i);    
+            }  
+
+        });
+      
+        
+    document.getElementById("subrow").addEventListener("click",()=>{
+    var mytable = document.getElementById("table");  
+    var rows = mytable.rows.length;  
+    if(rows>2){
+        mytable.deleteRow(rows-1);  
+    }
+    });
+       
+     
+     
+       
+        
+
+    
+   document.getElementById("addcol").addEventListener("click",()=>{
+    var tbl =  document.getElementById("table");
+    var rows=tbl.rows.length; 
+    
+    // this is arraylist of all existing row
+  tr = tbl.getElementsByTagName("tr");
+
+  for (i = 0; i <rows; i++) {
+      var td = document.createElement('td');
+      tr[i].appendChild(td);
+    }
+})
+
+    
+
+   document.getElementById("subcol").addEventListener("click",()=>{
+    var tbl = document.getElementById("table");
+    var rows = tbl.rows.length;
+    var   cells = tbl.rows[0].cells.length;
+    
+    var rows = tbl.rows.length;
+   tr=tbl.getElementsByTagName("tr");
+   if(cells>2){
+
+       for (i = 0; i < rows; i++) {
+           
+           tr[i].deleteCell(cells-1);
+           
+        }
+}
+
+   
+   })
+ 
+  
+    
+        
+        
+        
+    </script>
+</body>
+
+</html>
