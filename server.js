@@ -7,6 +7,7 @@ const paginationRoute=require("./routes/task_5Route.js");
 const filterationRoute=require("./routes/task6_Route.js");
 const task7Route=require("./routes/task7Route.js");
 const task8Route=require("./routes/task8Route.js");
+const task9Route=require("./routes/task9Route.js");
 const jstaskRoute=require("./routes/jstaskRoute.js");
 var cookieParser = require('cookie-parser');
 const dotenv=require("dotenv");
@@ -28,6 +29,7 @@ app.use('/pagination',paginationRoute);
 app.use('/filteration',filterationRoute);
 app.use('/task7',task7Route);
 app.use('/dynamicgrid',task8Route);
+app.use('/search',task9Route);
 app.use((err,req,res,next)=>{
     
      const statuscode=err.statusCode;
