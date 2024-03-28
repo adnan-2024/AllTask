@@ -10,6 +10,7 @@ const task8Route=require("./routes/task8Route.js");
 const task9Route=require("./routes/task9Route.js");
 const task10Route=require("./routes/task10route.js");
 const task11Route=require("./routes/task11Route.js");
+const task12Route=require("./routes/task12route.js");
 const wireframesRoute=require("./routes/wireframesRoute.js");
 const jstaskRoute=require("./routes/jstaskRoute.js");
 var cookieParser = require('cookie-parser');
@@ -37,6 +38,7 @@ app.use('/search',task9Route);
 app.use('/delimeter',task10Route);
 app.use('/webpages',wireframesRoute);
 app.use('/api',task11Route);
+app.use('/crud',task12Route);
 
 app.use((err,req,res,next)=>{
     

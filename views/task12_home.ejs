@@ -1,0 +1,1255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            border: 2px;
+
+        }
+
+        p {
+            font-size: 24px;
+            font-weight: 800;
+
+        }
+
+        #ssc {
+            font-size: 20px;
+            font-weight: 800;
+
+
+
+        }
+
+        button {
+            border: none;
+            font-size: 18px;
+            color: white;
+            cursor: pointer;
+            padding: 10px 20px;
+            background-color: teal;
+        }
+
+        #trbtn {
+            width: 760px;
+            margin: 0 auto;
+
+        }
+
+        .hidden {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <table cellpadding="6">
+        <div class="error"></div>
+        <form action="/crud/create" method="post" onsubmit="return validate()" id="myform">
+            <p>Basic_Details</p>
+            <tr>
+                <td>Firstname</td>
+
+                <td><input type="text" name="firstname" id="firstname">
+                    <span class="hidden hidfirstname"></span>
+                </td>
+
+
+                <td>Lastname</td>
+                <td><input type="text" name="lastname" id="lastname">
+                    <span class="hidden hidlastname"></span>
+                </td>
+
+
+            </tr>
+            <tr>
+                <td>Designation</td>
+                <td><input type="text" name="designation" id="designation">
+                    <span class="hidden hiddesignation"></span>
+                </td>
+
+                <td>Address1</td>
+                <td><input type="text" name="current_address" id="current_address">
+                    <span class="hidden hidcurrent_address"></span>
+                </td>
+
+                <td>Address2</td>
+                <td><input type="text" name="permenant_address" id="permenant_address">
+                    <span class="hidden hidpermenant_address"></span>
+                </td>
+
+
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td><input type="text" name="email" id="email">
+                    <span class="hidden hidemail"></span>
+                </td>
+                <td>phone number</td>
+                <td><input type="text" name="number" id="number">
+                    <span class="hidden hidphone_number"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>City</td>
+                <td><input type="text" name="city" id="city">
+                    <span class="hidden hidcity"></span>
+                </td>
+                <td>Zip Code</td>
+                <td><input type="text" name="zip" id="zip">
+                    <span class="hidden hidzip"></span>
+                </td>
+                <td>State</td>
+                <td><select name="statedropdown" id="statedropdown">
+                        <option value="" selected disabled hidden>Choose State</option>
+                        <option value="gujarat">Gujarat</option>
+                        <option value="rajasthan">Rajasthan</option>
+                        <option value="maharastra">Maharastra</option>
+                        <option value="west bangal">West Bangal</option>
+                    </select>
+                    <span class="hidden hidstatedropdown"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>Gender</td>
+                <td>
+                    <label for="Male">Male</label>
+                    <input type="radio" name="gender" value="male" id="male">
+                    <label for="Female">Female</label>
+                    <input type="radio" name="gender" value="female" id="female">
+                    <span class="hidden hidgenderradio"></span>
+                </td>
+
+
+            </tr>
+            <tr>
+                <td><label for="Relationship">Relationshipstatus</label></td>
+
+                <td><select name="relationdropdown" id="relationdropdown">
+                        <option value="" selected disabled hidden>Choose Status</option>
+                        <option value="Married">Married</option>
+                        <option value="Single">Single</option>
+                    </select>
+                    <span class="hidden hidrelationshipdropdown"></span>
+                </td>
+
+
+
+
+                </td>
+                <td><label for="date">Date</label></td>
+                <td>
+
+                    <input type="text" name="date" id="date">
+                    <span class="hidden hiddate"></span>
+                </td>
+            </tr>
+            <!-- Education Details Section  starts -->
+
+            <tr>
+                <hr>
+            </tr>
+            <tr style="border-bottom:1px solid black">
+                <td colspan="100%"></td>
+            </tr>
+            <tr>
+                <td id="ssc">SSC Detail</td>
+            </tr>
+
+
+
+            <tr>
+                <td>Name of Board</td>
+                <td><input type="text" name="ssc_board_name" id="ssc_board_name">
+                    <span class="hidden hidssc_board_name"></span>
+                </td>
+                <td>Passing year</td>
+                <td><input type="text" name="ssc_passing_year" id="ssc_passing_year">
+                    <span class="hidden hidssc_passing_year"></span>
+                </td>
+                <td>Percentage</td>
+                <td><input type="text" name="ssc_percentage" id="ssc_percentage">
+                    <span class="hidden hidssc_percentage"></span>
+                </td>
+            </tr>
+            <tr style="border-bottom:1px solid black">
+                <td colspan="100%"></td>
+            </tr>
+            <tr>
+                <td id="ssc">HSC Detail</td>
+            </tr>
+
+            <tr>
+                <td>Name of Board</td>
+                <td><input type="text" name="hsc_board_name" id="hsc_board_name">
+                    <span class="hidden hidhsc_board_name"></span>
+                </td>
+                <td>Passing year</td>
+                <td><input type="text" name="hsc_passing_year" id="hsc_passing_year">
+                    <span class="hidden hidhsc_passing_year"></span>
+                </td>
+                <td>Percentage</td>
+                <td><input type="text" name="hsc_percentage" id="hsc_percentage">
+                    <span class="hidden hidhsc_percentage"></span>
+                </td>
+            </tr>
+            <tr style="border-bottom:1px solid black">
+                <td colspan="100%"></td>
+            </tr>
+            <tr>
+                <td id="ssc">Bachelor degree</td>
+            </tr>
+
+            <tr>
+                <td>CourseName</td>
+                <td><input type="text" name="bachelor_course_name" id="bachelor_course_name">
+                    <span class="hidden hidbachelor_course_name"></span>
+                </td>
+                <td>Univercity</td>
+                <td><input type="text" name="bachelor_univercity" id="bachelor_univercity">
+                    <span class="hidden hidbachelor_univercity"></span>
+                </td>
+                <td>Passing year</td>
+                <td><input type="text" name="bachelor_passing_year" id="bachelor_passing_year">
+                    <span class="hidden hidbachelor_passing_year"></span>
+                </td>
+                <td>Percentage</td>
+                <td><input type="text" name="bachelor_percentage" id="bachelor_percentage">
+                    <span class="hidden hidbachelor_percentage"></span>
+                </td>
+            </tr>
+            <tr style="border-bottom:1px solid black">
+                <td colspan="100%"></td>
+            </tr>
+            <tr>
+                <td id="ssc">Master degree</td>
+            </tr>
+            <tr>
+                <td>CourseName</td>
+                <td><input type="text" name="master_course_name" id="master_course_name">
+                    <span class="hidden hidmaster_course_name"></span>
+                </td>
+                <td>Univercity</td>
+                <td><input type="text" name="master_univercity" id="master_univercity">
+                    <span class="hidden hidmaster_univercity"></span>
+                </td>
+                <td>Passing year</td>
+                <td><input type="text" name="master_passing_year" id="master_passing_year">
+                    <span class="hidden hidmaster_passing_year"></span>
+                </td>
+                </td>
+                <td>Percentage</td>
+                <td><input type="text" name="master_percentage" id="master_percentage">
+                    <span class="hidden hidmaster_percentage"></span>
+                </td>
+                </td>
+            </tr>
+            <tr style="border-bottom:1px solid black">
+                <td colspan="100%"></td>
+            </tr>
+
+            <!-- --------------------------------------------------Work Expericence -->
+           
+            <tr>
+                <td id="ssc">Work Experince</td>
+            </tr>
+            <tr>
+                <td>Company Name</td>
+                <td><input type="text" name="companyname" id=""></td>
+                <td>Designation</td>
+                <td><input type="text" name="designation1" id=""></td>
+                <td>From</td>
+                <td><input type="text" name="fromdate" id="fromdate1">
+                    <span class="hidden hidfromdate1"></span>
+                </td>
+                <td>To</td>
+                <td><input type="text" name="todate" id="todate1">
+                    <span class="hidden hidtodate1"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>Company Name</td>
+                <td><input type="text" name="companyname" id=""></td>
+                <td>Designation</td>
+                <td><input type="text" name="designation1" id=""></td>
+                <td>From</td>
+                <td><input type="text" name="fromdate" id="fromdate2">
+                    <span class="hidden hidfromdate2"></span>
+                </td>
+                <td>To</td>
+                <td><input type="text" name="todate" id="todate2">
+                    <span class="hidden hidtodate2"></span>
+                </td>
+            </tr>
+            
+            <tr style="border-bottom:1px solid black">
+                <td colspan="100%"></td>
+            </tr>
+<!-- ---------------------------------------------------------------------------------------------------------- -->
+<!-- lANGUAGE sECTION STARTS -->
+              <tr>
+                <td id="ssc">Language Known</td>
+              </tr>
+              <tr>
+                <td>
+                    <input type="checkbox" value="hindi" name="language" id="hindi">
+                    <label>Hindi</label>
+                    <span class="hidden hidhindi"></span>
+                </td>
+                <td>
+                    <input type="checkbox" name="hindiread" value="read" class="hindiall" id="hindiread">
+                    <label for="hindi">Read</label>
+                    
+                </td>
+                <td>
+                    <input type="checkbox" name="hindiwrite" value="write" class="hindiall" id="hindiwrite">
+                    <label for="hindi">Write</label>
+                </td>
+                <td>
+                    <input type="checkbox" name="hindispeak" value="speak" class="hindiall" id="hindispeak">
+                    <label for="hindi">Speak</label>
+                </td>
+
+              </tr>
+              <tr>
+                <td>
+                    <input type="checkbox" value="english" name="language" id="english">
+                    <label for="hindi">English</label>
+                    <span class="hidden hidenglish"></span>
+                </td>
+                <td>
+                    <input type="checkbox" name="englishread" value="read" class="englishall" id="englishread">
+                    <label for="hindi">Read</label>
+                </td>
+                <td>
+                    <input type="checkbox" name="englishwrite" value="write" class="englishall" id="englishwrite">
+                    <label for="hindi">Write</label>
+                </td>
+                <td>
+                    <input type="checkbox" name="englishspeak" value="speak" class="englishall" id="englishspeak">
+                    <label for="hindi">Speak</label>
+                </td>
+
+              </tr>
+              <tr>
+                <td>
+                    <input type="checkbox" value="gujarati" name="language" id="gujarati">
+                    <label for="hindi">Gujarati</label>
+                    <span class="hidden hidgujarati"></span>
+                </td>
+                <td>
+                    <input type="checkbox" name="gujaratiread" value="read" class="gujartiall" id="gujaratiread">
+                    <label for="hindi">Read</label>
+                </td>
+                <td>
+                    <input type="checkbox" name="gujaratiwrite"  value="write" class="gujartiall" id="gujaratiwrite">
+                    <label for="hindi">Write</label>
+                </td>
+                <td>
+                    <input type="checkbox" name="gujaratispeak" value="speak" class="gujartiall" id="gujaratispeak">
+                    <label for="hindi">Speak</label>
+                </td>
+
+              </tr>
+<!-- technologies section start-------------------------------------------------------------------------------- -->
+
+<tr style="border-bottom: 1px solid black;">
+    <td colspan="100%"></td>
+  </tr>
+  <tr>
+    <td id="ssc">Technology known</td>
+  </tr>
+  <tr>
+    <td>
+        <input type="checkbox" name="php" value="PHP" id="php">
+        <label>PHP</label>
+        <span class="hidden hidphp"></span>
+    </td>
+    <td>
+        <input type="radio" name="phpradio" value="beginner" class="phpall" id="">
+        <label>Beginner</label>
+    </td>
+    <td>
+        <input type="radio" name="phpradio" class="phpall" value="intermidiate" id="">
+        <label for="hindi">Intermidiate</label>
+    </td>
+    <td>
+        <input type="radio"name="phpradio" class="phpall" value="expert" id="">
+        <label for="hindi">Expert</label>
+    </td>
+
+  </tr>
+  <tr>
+    <td>
+        <input type="checkbox" name="mysql" value="MYSQL"  id="mysql">
+        <label>Mysql</label>
+        <span class="hidden hidmysql"></span>
+    </td>
+    <td>
+        <input type="radio" name="mysqlradio" value="beginner" class="mysqlall" id="">
+        <label >Beginner</label>
+    </td>
+    <td>
+        <input type="radio" name="mysqlradio" value="intermidiate" class="mysqlall" id="">
+        <label >Intermidiate</label>
+    </td>
+    <td>
+        <input type="radio" name="mysqlradio" value="expert" class="mysqlall" id="">
+        <label>Expert</label>
+    </td>
+
+  </tr>
+  <tr>
+    <td>
+        <input type="checkbox" name="laravel" value="LARAVEL" id="laravel">
+        <label>laravare</label>
+        <span class="hidden hidlaravel"></span>
+    </td>
+    <td>
+        <input type="radio" name="laravelradio" value="beginner" class="laravelall" >
+        <label>Beginner</label>
+    </td>
+    <td>
+        <input type="radio" name="laravelradio" value="intermidiate" class="laravelall" id="">
+        <label>Intermidiate</label>
+    </td>
+    <td>
+        <input type="radio" name="laravelradio" value="expert" class="laravelall" id="">
+        <label>Expert</label>
+    </td>
+
+  </tr>
+  <tr>
+    <td>
+        <input type="checkbox" name="oracle" value="ORACLE"  id="oracle">
+        <label>Oracle</label>
+        <span class="hidden hidoracle"></span>
+    </td>
+    <td>
+        <input type="radio" name="oracleradio" value="beginner" class="oracleall" id="">
+        <label>Beginner</label>
+    </td>
+    <td>
+        <input type="radio" name="oracleradio"  value="intermidiate" class="oracleall" id="">
+        <label>Intermidiate</label>
+    </td>
+    <td>
+        <input type="radio" name="oracleradio" value="expert" class="oracleall" id="">
+        <label>Expert</label>
+    </td>
+
+  </tr>
+  <tr style="border-bottom: 1px solid black;">
+    <td colspan="100%"></td>
+  </tr>
+  
+  <!-- <<<--------------------------------------------------------------------------- -->
+  <!-- Reference section starts -->
+  <tr>
+      <td id="ssc">References</td>
+    </tr>
+    <tr>
+        <td>Name <span class="hidden hidreferencename1"></span></td>
+        
+        <td><input type="text" name="referencename" id="referencename1"></td>
+        <td>Contact Number</td>
+        <td><input type="text" name="referencecontactnumber" id="referencecontactnumber1"></td>
+        <td>Relation</td>
+        <td><input type="text" name="referecerelation" id="referecerelation1"></td>
+    </tr>
+   
+
+<tr style="border-bottom: 1px solid black;">
+  <td colspan="100%"></td>
+</tr>
+<tr>
+    <td><label for="prefered location">Prefered Location</label></td>
+    <td><select name="preferedlocationdropdown" id="preferedlocationdropdown">
+        <option value="">Choose city</option>
+        <option value="Ahmedabad">Ahmedabad</option>
+        <option value="Vadodra">Vadodra</option>
+        <option value="Surat">Surat</option>
+        <option value="Anand">Anand</option>
+    </select>
+<span class="hidden hidpreferedlocation"></span>    
+</td>
+
+
+<td><label for="noticeperiod">Notice Period</label></td>
+<td>
+
+    <input type="text" name="noticeperiod" id="noticeperiod">
+    <span class="hidden hidnoticeperiod"></span> 
+</td>
+
+<td><label for="department">Department</label></td>
+<td><select name="departmentdropdown" id="departmentdropdown">
+    <option value="">Choose department</option>
+    <option value="Development">Development</option>
+    <option value="Marketing">Marketing</option>
+    <option value="Testing">Testing</option>
+    <option value="Content Developer">Content developer</option>
+    </select>
+    <span class="hidden hiddepartment"></span>
+</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>Expected CTC</td>
+<td><input type="text" name="currentctc" id="currentctc">
+    <span class="hidden hidcurrentctc"></span> 
+</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>Current CTC</td>
+<td><input type="text" name="expectedctc" id="expectedctc">
+    <span class="hidden hidexpectedctc"></span> 
+</td>
+</tr>
+
+
+            <tr id="trbtn">
+                <td>
+
+                    <button type="submit">Submit</button>
+                </td>
+            </tr>
+
+
+        </form>
+    </table>
+
+
+    <script>
+
+        function validate() {
+
+            var isvalid = true;
+
+            let sapn = document.querySelectorAll("span");
+            sapn.forEach((span) => {
+                span.style.display = "none"
+            })
+//             // ------------------------------------------------------------------------------------------------------------------------
+            //  Validation for basic detaisl
+                    var firstname = document.getElementById("firstname");
+                    var lastname = document.getElementById("lastname");
+                    var designation = document.getElementById("designation");
+                    var current_address = document.getElementById("current_address");
+                    var permenant_address = document.getElementById("permenant_address");
+                    var email = document.getElementById("email");
+
+                    var city = document.getElementById("city");
+                    var zip = document.getElementById("zip");
+                    var statedropdown = document.getElementById("statedropdown");
+                    var gender = document.getElementsByName('gender');
+                    var number = document.getElementById("number");
+                    var relationdropdown = document.getElementById("relationdropdown");
+                    var date = document.getElementById("date");
+
+//             //     
+
+//             //         //    For handing error
+                    let hidfirstname = document.querySelector(".hidfirstname");
+                    let hidlastname = document.querySelector(".hidlastname");
+                    let hiddesignation = document.querySelector(".hiddesignation");
+                    let hidcurrent_address = document.querySelector(".hidcurrent_address");
+                    let hidpermenant_address = document.querySelector(".hidpermenant_address");
+                    let hidemail = document.querySelector(".hidemail");
+                    let hidphone_number = document.querySelector(".hidphone_number");
+                    let hidcity = document.querySelector(".hidcity");
+                    let hidzip = document.querySelector(".hidzip");
+                    let hidstatedropdown = document.querySelector(".hidstatedropdown");
+                    let hidgenderradio = document.querySelector(".hidgenderradio");
+                    let hidnumber = document.querySelector(".hidnumber");
+                    let hidrelationshipdropdown = document.querySelector(".hidrelationshipdropdown");
+                    let hiddate = document.querySelector(".hiddate");
+
+            //         // condition for returning form
+                    if (firstname.value === "") {
+                        isvalid = false;
+                        errorhandler(" Enter Firstname", hidfirstname);
+
+                    }
+                    if (lastname.value === "") {
+                        isvalid = false;
+                        errorhandler(" Enter LAstname", hidlastname);
+                    }
+                    if (designation.value === "") {
+                        isvalid = false;
+                        errorhandler(" Enter Designation", hiddesignation);
+                    }
+                    if (current_address.value === "") {
+                        isvalid = false;
+                        errorhandler(" Enter Current Address", hidcurrent_address);
+                    }
+                    if (permenant_address.value === "") {
+                        isvalid = false;
+                        errorhandler(" Enter Permanant Address", hidpermenant_address);
+                    }
+                    if (email.value === "") {
+                        isvalid = false;
+
+                        errorhandler(" Enter Email", hidemail);
+                    }
+                    if (number.value === "") {
+                        isvalid = false;
+
+                        errorhandler(" Enter Number", hidphone_number);
+                    }
+                    if (city.value === "") {
+                        isvalid = false;
+                        errorhandler(" Enter City", hidcity);
+                    }
+                    if (zip.value === "") {
+                        isvalid = false;
+                        errorhandler(" Enter Zip", hidzip);
+                    }
+
+
+            //         //    for validating gender radio
+                    var genValue = false;
+
+                    for (var i = 0; i < gender.length; i++) {
+                        if (gender[i].checked == true) {
+                            genValue = true;
+                        }
+                    }
+                    if (!genValue) {
+                        errorhandler(" Select gender", hidgenderradio)
+                        isvalid = false;
+                    }
+
+
+
+
+
+            //         // for validating state dropdown
+                    var statedropdownoptionSelIndex = statedropdown.options[statedropdown.selectedIndex].value;
+                    if (statedropdownoptionSelIndex == 0) {
+                        isvalid = false;
+                        errorhandler("Pleae select state", hidstatedropdown);
+
+                    }
+            //         // forvalidaing relationshipdropdown
+                    var optionSelIndex = relationdropdown.options[relationdropdown.selectedIndex].value;
+
+                    if (optionSelIndex == 0) {
+                        isvalid = false;
+                        errorhandler("Pleae select Relationship Status", hidrelationshipdropdown);
+                    }
+
+                    if (date.value == "") {
+
+                        isvalid = false;
+                        errorhandler(" select date", hiddate);
+                    }
+
+            //         //  for checking date
+                    if(date.value){
+                        let datea=date.value;
+              var regEx = /^\d{4}-\d{2}-\d{2}$/;
+              if(!datea.match(regEx)){
+            isvalid=false;
+                errorhandler(" select date in yyyy/mm/dd format", hiddate);
+              }
+
+
+                    }
+
+            //         // for checking phone number
+
+                    if (isNaN(number.value)) {
+                      
+                        errorhandler(" enter an numeric value", hidphone_number);
+                        isvalid = false;
+
+                    } 
+                    let len=number.value.length;
+                    if(len>10){
+                        errorhandler(" enter between 1 to 10", hidphone_number);
+                        isvalid = false;
+                    }
+                    if(len<1){
+                        errorhandler(" enter between 1 to 10", hidphone_number);
+                        isvalid = false;
+                    }
+
+            //         // for checking mail
+                    if (email.value) {
+                            var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+                            if (!email.value.match(mailformat)) {
+                              errorhandler(" enter valid email",hidemail);
+                              isvalid=false;
+                            }
+
+                        }
+
+
+
+//             // -------------------------------------------------------------------------------------------------------------------------------------
+//             // Validation for Education details
+
+            let ssc_board_name = document.getElementById("ssc_board_name");
+            let ssc_passing_year = document.getElementById("ssc_passing_year");
+            let ssc_percentage = document.getElementById("ssc_percentage");
+            let hsc_board_name = document.getElementById("hsc_board_name");
+            let hsc_passing_year = document.getElementById("hsc_passing_year");
+            let hsc_percentage = document.getElementById("hsc_percentage");
+            let bachelor_course_name = document.getElementById("bachelor_course_name")
+            let bachelor_univercity = document.getElementById("bachelor_univercity")
+            let bachelor_passing_year = document.getElementById("bachelor_passing_year");
+            let bachelor_percentage = document.getElementById("bachelor_percentage")
+            let master_course_name = document.getElementById("master_course_name")
+            let master_univercity = document.getElementById("master_univercity");
+            let master_passing_year = document.getElementById("master_passing_year")
+            let master_percentage = document.getElementById("master_percentage")
+
+
+//             // // error handing id's for education details
+
+            let hidssc_board_name = document.querySelector(".hidssc_board_name");
+            let hidssc_passing_year = document.querySelector(".hidssc_passing_year");
+            let hidhsc_percentage = document.querySelector(".hidhsc_percentage");
+            let hidssc_percentage = document.querySelector(".hidssc_percentage");
+            let hidhsc_board_name = document.querySelector(".hidhsc_board_name");
+            let hidhsc_passing_year = document.querySelector(".hidhsc_passing_year");
+            let hidbachelor_course_name = document.querySelector(".hidbachelor_course_name");
+            let hidbachelor_univercity = document.querySelector(".hidbachelor_univercity");
+            let hidbachelor_passing_year = document.querySelector(".hidbachelor_passing_year");
+            let hidbachelor_percentage = document.querySelector(".hidbachelor_percentage");
+            let hidmaster_course_name = document.querySelector(".hidmaster_course_name");
+            let hidmaster_univercity = document.querySelector(".hidmaster_univercity");
+            let hidmaster_passing_year = document.querySelector(".hidmaster_passing_year");
+            let hidmaster_percentage = document.querySelector(".hidmaster_percentage");
+
+
+            if (ssc_board_name.value == "") {
+                isvalid = false;
+                errorhandler(" enter Board name", hidssc_board_name)
+            }
+            if (ssc_passing_year.value === "") {
+                isvalid = false;
+                errorhandler(" enter Passig year", hidssc_passing_year);
+            }
+            if (ssc_percentage.value === "") {
+                isvalid = false;
+                errorhandler(" enter percentage", hidssc_percentage);
+            }
+            if (hsc_board_name.value == "") {
+                isvalid = false;
+                errorhandler(" enter Board name", hidhsc_board_name)
+            }
+            if (hsc_passing_year.value === "") {
+                isvalid = false;
+                errorhandler(" enter Passig year", hidhsc_passing_year);
+            }
+            if (hsc_percentage.value === "") {
+                isvalid = false;
+                errorhandler(" enter percentage", hidhsc_percentage);
+            }
+            if (ssc_percentage.value) {
+                var x = parseFloat(ssc_percentage.value);
+             
+                if (isNaN(x) || x < 0 || x > 100) {
+                    isvalid = false;
+                    errorhandler("outofrange", hidssc_percentage);
+                }
+            }
+            if (hsc_percentage.value) {
+                var x = parseFloat(hsc_percentage.value);
+           
+                if (isNaN(x) || x < 0 || x > 100) {
+                    isvalid = false;
+                    errorhandler("outofrange", hidhsc_percentage);
+                }
+            }
+            if(bachelor_course_name.value==""){
+                isvalid=false;
+                errorhandler(" enter bachelor course name",hidbachelor_course_name)
+            }
+            if(bachelor_univercity.value==""){
+                isvalid=false;
+                errorhandler("Enter univercity name",hidbachelor_univercity);
+            }
+            if(bachelor_passing_year.value==""){
+                isvalid=false;
+                errorhandler("Enter passing year",hidbachelor_passing_year);
+            }
+            if(bachelor_percentage.value==""){
+                isvalid=false;
+                errorhandler("Enter percentage",hidbachelor_percentage);
+            }
+            if(master_course_name.value==""){
+                isvalid=false;
+                errorhandler(" enter bachelor course name",hidmaster_course_name)
+            }
+            if(master_univercity.value==""){
+                isvalid=false;
+                errorhandler("Enter univercity name",hidmaster_univercity);
+            }
+            if(master_passing_year.value==""){
+                isvalid=false;
+                errorhandler("Enter passing year",hidmaster_passing_year);
+            }
+            if(master_percentage.value==""){
+                isvalid=false;
+                errorhandler("Enter percentage",hidmaster_percentage);
+            }
+
+            if (bachelor_percentage.value) {
+                var x = parseFloat(bachelor_percentage.value);
+
+                if (isNaN(x) || x < 0 || x > 100) {
+                    isvalid = false;
+                    errorhandler("outofrange", hidbachelor_percentage);
+                }
+            }
+            if(ssc_passing_year.value){
+
+               let ssc_year_length=ssc_passing_year.value.length;
+               if(ssc_year_length!=4){
+                errorhandler("please enter valid year",hidssc_passing_year);
+               }
+
+            }
+            if(hsc_passing_year.value){
+
+               let hsc_year_length=hsc_passing_year.value.length;
+               if(hsc_year_length!=4){
+                errorhandler("please enter valid year",hidhsc_passing_year);
+               }
+
+            }
+            if(bachelor_passing_year.value){
+           
+               let bachelor_year_length=bachelor_passing_year.value.length;
+               if(bachelor_year_length!=4){
+                errorhandler("please enter valid year",hidbachelor_passing_year);
+               }
+
+            }
+            if(master_passing_year.value){
+
+               let master_year_length=master_passing_year.value.length;
+               if(master_year_length!=4){
+                errorhandler("please enter valid year",hidmaster_passing_year);
+               }
+
+            }
+            if (master_percentage.value) {
+                var x = parseFloat(master_percentage.value);
+
+                if (isNaN(x) || x < 0 || x > 100) {
+                    isvalid = false;
+                    errorhandler("outofrange", hidmaster_percentage);
+                }
+            }
+
+//             // ---------------------------------------------------------------------------------------------------------------------------
+
+// //             // Validation For  Work Experience
+
+            let fromdate1 = document.getElementById("fromdate1");
+            let fromdate2 = document.getElementById("fromdate2");
+           
+            let todate1 = document.getElementById("todate1");
+            let todate2 = document.getElementById("todate2");
+            
+          
+        //     // error handing for date
+            let hidfromdate1 = document.querySelector(".hidfromdate1");
+            let hidfromdate2 = document.querySelector(".hidfromdate2");
+            let hidtodate1 = document.querySelector(".hidtodate1");
+            let hidtodate2 = document.querySelector(".hidtodate2");
+           
+            
+
+        //   
+        //     //  for checking date
+            if (fromdate1.value) {
+                
+                let datea = fromdate1.value;
+                var regEx = /^\d{4}-\d{2}-\d{2}$/;
+                if (!datea.match(regEx)) {
+                    isvalid = false;
+                    errorhandler(" select date in yyyy-mm-dd format", hidfromdate1);
+                }
+
+            }
+            if (fromdate2.value) {
+              
+                let datea = fromdate2.value;
+                var regEx = /^\d{4}-\d{2}-\d{2}$/;
+                if (!datea.match(regEx)) {
+                    isvalid = false;
+                
+                    errorhandler("select date in yyyy-mm-dd format",hidfromdate2);
+                }
+
+            }
+            
+            if (todate1.value) {
+                let datea = todate1.value;
+                var regEx = /^\d{4}-\d{2}-\d{2}$/;
+                if (!datea.match(regEx)) {
+                    isvalid = false;
+                    errorhandler(" select date in yyyy-mm-dd format", hidtodate1);
+                }
+            }
+            if (todate2.value) {
+                let datea = todate2.value;
+                var regEx = /^\d{4}-\d{2}-\d{2}$/;
+                if (!datea.match(regEx)) {
+                    isvalid = false;
+                    errorhandler(" select date in yyyy-mm-dd format", hidtodate2);
+                }
+            }
+          
+// // Validation for Language known
+// --------------------------------------------------------------------------------------------------
+                      let hindicheckbox=document.getElementById("hindi");
+                      let englishcheckbox=document.getElementById("english");
+                      let gujaraticheckbox=document.getElementById("gujarati");
+                     let hindioptionscheckbox=document.querySelectorAll(".hindiall");
+                     let englishoptionscheckbox=document.querySelectorAll(".englishall");
+                     let gujartioptionscheckbox=document.querySelectorAll(".gujartiall");
+                    let  hidhindi=document.querySelector(".hidhindi");
+                    let hidenglish =document.querySelector(".hidenglish");
+                    let  hidgujarati=document.querySelector(".hidgujarati");
+
+
+           let  ishindiseleceted=false;
+                   if(hindicheckbox.checked){
+                    hindioptionscheckbox.forEach((single)=>{
+                   if(!single.checked){
+                    ishindiseleceted=true;
+               
+                   }
+  
+                    })
+                   }
+             
+             hindioptionscheckbox.forEach((single)=>{
+                     if(single.checked){
+                        ishindiseleceted=false;
+                        if(!hindicheckbox.checked){
+                            isvalid=false;
+                            errorhandler("Please select hindi",hidhindi);
+                        }
+                     }
+             })      
+
+             if(ishindiseleceted){
+       
+                            isvalid=false;
+                            errorhandler("Please select options for hindi",hidhindi);
+                      }
+                     
+                      let  isenglishseleceted=false;
+                   if(englishcheckbox.checked){
+                    englishoptionscheckbox.forEach((single)=>{
+                   if(!single.checked){
+                    isenglishseleceted=true;
+               
+                   }
+  
+                    })
+                   }
+             
+             englishoptionscheckbox.forEach((single)=>{
+                     if(single.checked){
+                        isenglishseleceted=false;
+                        if(!englishcheckbox.checked){
+                            isvalid=false;
+                          
+                            errorhandler("Please select english",hidenglish);
+                        }
+                     }
+             })      
+
+             if(isenglishseleceted){
+                        isvalid=false;
+                            errorhandler("Please select options for english",hidenglish);
+                      }
+             
+                      let  isgujaratiseleceted=false;
+                   if(gujaraticheckbox.checked){
+                    gujartioptionscheckbox.forEach((single)=>{
+                   if(!single.checked){
+                    isgujaratiseleceted=true;
+               
+                   }
+  
+                    })
+                   }
+             
+                   gujartioptionscheckbox.forEach((single)=>{
+                     if(single.checked){
+                        isgujaratiseleceted=false;
+                        if(!gujaraticheckbox.checked){
+                            isvalid=false;
+                            errorhandler("Please select gujarati",hidgujarati);
+                        }
+                     }
+             })      
+
+             if(isgujaratiseleceted){
+                        isvalid=false;
+                            errorhandler("Please select options for gujarati",hidgujarati);
+                      }
+
+// // validation for technology
+// ----------------------------------------------------------------------------------------------------------
+                         let mysqlcheckbox=document.getElementById("mysql");
+                      let phpcheckbox=document.getElementById("php");
+                      let laravelcheckbox=document.getElementById("laravel");
+                      let oraclecheckbox=document.getElementById("oracle");
+                      let  hidphp=document.querySelector(".hidphp");
+                    let hidmysql=document.querySelector(".hidmysql");
+                    let  hidoracle=document.querySelector(".hidoracle");
+                    let  hidlaravel=document.querySelector(".hidlaravel");
+                    let phpoptionscheckbox=document.querySelectorAll(".phpall");
+                    let mysqloptionscheckbox=document.querySelectorAll(".mysqlall");
+                    let laraveloptionscheckbox=document.querySelectorAll(".laravelall");
+                    let oracleoptionscheckbox=document.querySelectorAll(".oracleall");
+
+                    let  isphpseleceted=false;
+                   if(phpcheckbox.checked){
+                    phpoptionscheckbox.forEach((single)=>{
+                   if(!single.checked){
+                    isphpseleceted=true;
+               
+                   }
+  
+                    })
+                   }
+             
+             phpoptionscheckbox.forEach((single)=>{
+                     if(single.checked){
+                        isphpseleceted=false;
+                        if(!phpcheckbox.checked){
+                            isvalid=false;
+                            errorhandler("Please select php",hidphp);
+                        }
+                     }
+             })      
+
+             if(isphpseleceted){
+                
+                            isvalid=false;
+                            errorhandler("Please select options for php",hidphp);
+                      }
+
+
+                      let  ismysqlseleceted=false;
+                   if(mysqlcheckbox.checked){
+                    mysqloptionscheckbox.forEach((single)=>{
+                   if(!single.checked){
+                    ismysqlseleceted=true;
+               
+                   }
+  
+                    })
+                   }
+             
+             mysqloptionscheckbox.forEach((single)=>{
+                     if(single.checked){
+                        ismysqlseleceted=false;
+                        if(!mysqlcheckbox.checked){
+                            isvalid=false;
+                            errorhandler("Please select mysql",hidmysql);
+                        }
+                     }
+             })      
+
+             if(ismysqlseleceted){
+                
+                            isvalid=false;
+                            errorhandler("Please select options for mysql",hidmysql);
+                      }
+                      let  isoracleseleceted=false;
+                   if(oraclecheckbox.checked){
+                    oracleoptionscheckbox.forEach((single)=>{
+                   if(!single.checked){
+                    isoracleseleceted=true;
+               
+                   }
+  
+                    })
+                   }
+             
+             oracleoptionscheckbox.forEach((single)=>{
+                     if(single.checked){
+                        isoracleseleceted=false;
+                        if(!oraclecheckbox.checked){
+                            isvalid=false;
+                            errorhandler("Please select oracle",hidoracle);
+                        }
+                     }
+             })      
+
+             if(isoracleseleceted){
+                
+                            isvalid=false;
+                            errorhandler("Please select options for oracle",hidoracle);
+                      }
+
+                      let  islaravelseleceted=false;
+                   if(laravelcheckbox.checked){
+                    laraveloptionscheckbox.forEach((single)=>{
+                   if(!single.checked){
+                    islaravelseleceted=true;
+               
+                   }
+  
+                    })
+                   }
+             
+             laraveloptionscheckbox.forEach((single)=>{
+                     if(single.checked){
+                        islaravelseleceted=false;
+                        if(!laravelcheckbox.checked){
+                            isvalid=false;
+                            errorhandler("Please select laravel",hidlaravel);
+                        }
+                     }
+             })      
+
+             if(islaravelseleceted){
+                
+                            isvalid=false;
+                            errorhandler("Please select options for laravel",hidlaravel);
+                      }
+
+// ------------------------------------------------------>
+// Validation for References
+let referencename1=document.getElementById("referencename1");
+let referencecontactnumber1=document.getElementById("referencecontactnumber1");
+let referecerelation1=document.getElementById("referecerelation1");
+let referencename2=document.getElementById("referencename2");
+let referencecontactnumber2=document.getElementById("referencecontactnumber2")
+let referecerelation2=document.getElementById("referecerelation2");
+let hidreferencename1=document.querySelector(".hidreferencename1");
+let hidreferencename2=document.querySelector(".hidreferencename2");
+
+if(referencename1.value){
+    if(referencecontactnumber1.value=="" || referecerelation1.value1==""){
+        isvalid=false;
+        errorhandler("Please Fill Other values also",hidreferencename1);
+    }
+}
+if(referencecontactnumber1.value){
+    let moblength=referencecontactnumber1.value.length;
+    if(moblength!=10){
+        isvalid=false;
+        errorhandler("The mobile number length should be 10 digit",hidreferencename1);
+    }
+
+}
+if(referencecontactnumber2.value){
+    let moblength=referencecontactnumber2.value.length;
+    if(moblength!=10){
+        isvalid=false;
+        errorhandler("The mobile number length should be 10 digit",hidreferencename2);
+    }
+
+}
+if(referencecontactnumber1.value){
+    if(referecerelation1.value=="" ||referencename1.value ==""){
+        isvalid=false;
+        errorhandler("Please Fill Other values also",hidreferencename1);
+    }
+}
+if(referecerelation1.value){
+    if(referencecontactnumber1.value=="" ||referencename1.value ==""){
+        isvalid=false;
+        errorhandler("Please Fill Other values also",hidreferencename1);
+    }
+}
+if(referencename2.value){
+    if(referencecontactnumber2.value=="" || referecerelation2.value2==""){
+        isvalid=false;
+        errorhandler("Please Fill Other values also",hidreferencename2);
+    }
+}
+if(referencecontactnumber2.value){
+    if(referecerelation2.value=="" ||referencename2.value ==""){
+        isvalid=false;
+        errorhandler("Please Fill Other values also",hidreferencename2);
+    }
+}
+if(referecerelation2.value){
+    if(referencecontactnumber2.value=="" ||referencename2.value ==""){
+        isvalid=false;
+        errorhandler("Please Fill Other values also",hidreferencename2);
+    }
+}
+
+// ---------------------------------------------------
+// validation for preference table
+
+          let preferedlocationdropdown=document.getElementById("preferedlocationdropdown");
+          let noticeperiod=document.getElementById("noticeperiod");
+          let departmentdropdown=document.getElementById("departmentdropdown");
+          let currentctc=document.getElementById("currentctc");
+          let expectedctc=document.getElementById("expectedctc");
+        //    for error handling
+        let hidpreferedlocation= document.querySelector(".hidpreferedlocation");
+        let hidnoticeperiod=document.querySelector(".hidnoticeperiod");
+        let hiddepartment=document.querySelector(".hiddepartment");
+        let hidexpectedctc=document.querySelector(".hidexpectedctc");
+        let hidcurrentctc=document.querySelector(".hidcurrentctc");
+          
+        console.log(departmentdropdown)
+        var preferedlocationdropdownoptionSelIndex = preferedlocationdropdown.options[preferedlocationdropdown.selectedIndex].value;
+                    if (preferedlocationdropdownoptionSelIndex == 0) {
+                        isvalid = false;
+                        errorhandler("Pleae select city", hidpreferedlocation);
+
+                    }
+        var departmentdropdowndropdownoptionSelIndex = departmentdropdown.options[departmentdropdown.selectedIndex].value;
+                    if (departmentdropdowndropdownoptionSelIndex == 0) {
+                      
+                        isvalid = false;
+                        errorhandler("Pleae select Department",hiddepartment);
+
+                    }
+                    if(noticeperiod.value==""){
+                        errorhandler("enter Notice period",hidnoticeperiod);
+                    }
+                    if(currentctc.value==""){
+                        errorhandler("enter current ctc",hidcurrentctc);
+                    }
+                    if(expectedctc.value==""){
+                        errorhandler("enter expected ctc",hidexpectedctc);
+                    }
+
+        
+        
+        
+        return isvalid;
+
+
+
+
+
+            function errorhandler(message, field) {
+
+                field.style.display = "block";
+                field.innerHTML = message;
+            }
+
+        }
+    </script>
+</body>
+
+</html>
