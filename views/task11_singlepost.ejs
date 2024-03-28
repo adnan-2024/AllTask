@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Document</title>
+</head>
+<script>
+ 
+ 
+let url=window.location.href;
+ let postid=url.split("singlepost")[1].split("/")[1];
+
+ async function getPosts() {
+
+let response = await fetch(`https://jsonplaceholder.typicode.com/posts/${postid}`);
+let post = await response.json();
+let tittle=document.getElementById("title");
+let anchortag=document.getElementById("anchortag");
+let desc=document.getElementById("desc");
+tittle.innerHTML=post.title;
+desc.innerHTML=post.body;
+// for cretaing view comments sections
+let a=document.createElement("a");
+a.textContent="View Comments";
+a.style.border = '1px solid black';
+a.style.cursor="pointer";
+a.style.marginTop="1300px"
+a.onclick =async function() {
+    let response = await fetch(`https://jsonplaceholder.typicode.com//comments?postId=${postid}`);
+let comments = await response.json();
+let commentsection=document.getElementById("commentsection");
+comments.forEach(comment => {
+       let username=document.createElement("p");
+       username.textContent=comment.name;
+       username.style.fontSize="18px";
+       username.style.fontWeight="500";
+       username.style.marginBottom="12px"
+       let commentdesc=document.createElement("p");
+       commentdesc.style.marginTop="12px"
+       commentdesc.style.marginBottom="12px"
+       let hr=document.createElement("hr");
+       commentdesc.textContent=comment.body;
+       commentsection.appendChild(username)
+       commentsection.appendChild(commentdesc);
+       commentsection.appendChild(hr);
+
+    
+});
+};
+anchortag.appendChild(a);
+
+  
+
+}
+
+
+
+getPosts();
+</script>
+<body>
+     
+<a class="block max-w-lg mt-12 m-auto p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700" id="anchortag">
+
+    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white" id="title"></h5>
+    <p class="font-normal text-gray-700 dark:text-gray-400" id="desc"></p>
+    </a>
+    <div id="commentsection" class="max-w-4xl mx-auto p-12 mb-2 shadow-md">
+           <p class="font-bold text-2xl">Comments</p>
+    </div>
+</body>
+</html>
