@@ -6,6 +6,7 @@ const resultPerPage=200;
 
 
 router.get('/users',(req,res)=>{
+  
    const q="SELECT  * FROM StudentMaster_task5 LIMIT 30000";
     dbCon.query(q,(err,data)=>{
         if(err){

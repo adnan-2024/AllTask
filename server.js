@@ -4,6 +4,7 @@ const path=require("path");
 const authenticationroute=require("./routes/authentication.js");
 const userRoute=require("./routes/userRoute.js");
 const paginationRoute=require("./routes/task_5Route.js");
+const filterationRoute=require("./routes/task6_Route.js");
 const jstaskRoute=require("./routes/jstaskRoute.js");
 var cookieParser = require('cookie-parser');
 const dotenv=require("dotenv");
@@ -22,6 +23,7 @@ app.use(authenticationroute);
 app.use(userRoute);
 app.use(jstaskRoute);
 app.use('/pagination',paginationRoute);
+app.use('/filteration',filterationRoute);
 app.use((err,req,res,next)=>{
     
      const statuscode=err.statusCode;

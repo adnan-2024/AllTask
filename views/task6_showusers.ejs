@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+  
+    table{
+          border-collapse: collapse;
+     
+    }
+    body{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    .tablecont{
+    overflow-x: auto;
+    margin: 124px;
+    overflow-y: auto;
+    }
+    .tablecont{
+      width: 100%;
+      margin: 0 auto;
+      height: 600px;
+    
+    }
+    .section{
+      /* width: 100%; */
+     
+      padding: 20px 20px;
+    }
+      
+    th{
+      background-color: aqua;
+    }
+    a{
+   margin-right: 12px;
+      text-decoration: none;
+    }
+    .disabled {
+  pointer-events: none;
+  cursor: none;
+}
+.belowbox{
+  max-width: 400px;
+  margin: 0 auto;
+    margin-top: 13px;
+}
+button{
+  background-color: teal;
+  border-radius: 12px;
+  color: white;
+  font-size: 18px;
+  padding: 12px 23px;
+}
+    tr:nth-child(even) {background-color: #f2f2f2;}
+    .thdiv{
+      display: flex;
+      gap: 8px;
+    }
+    i{
+      cursor: pointer;
+    }
+
+    .disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+  </style>
+</head>
+<body>
+  <div class="section">
+
+ 
+  <div class="tablecont">
+    <table cellpadding="19">
+      <tr style="position: sticky; top: 0; left: 0;">
+        
+          <th>
+            <p>Student Id</p>
+
+            <div class="thdiv">
+              <a id="asc-link" href="/filteration/filter?column=student_id&currentpage=<%=currentpage%>&order_by=student_id&sorting_order=ASC">   <i class="fa-solid fa-up-long" onclick="changeopacity()"></i></a>
+              <a id="desc-link" href="/filteration/filter?column=student_id&currentpage=<%=currentpage%>&order_by=student_id&sorting_order=DESC">   <i class="fa-solid fa-down-long" onclick="changeopacity()"></i></a>
+            </div>
+          </th>
+
+          <th>
+            <p>First Name</p>
+            <div class="thdiv">
+              <a href="/filteration/filter?column=student_id&currentpage=<%=currentpage%>&order_by=first_name&sorting_order=ASC">   <i class="fa-solid fa-up-long" ></i></a>
+              <a href="/filteration/filter?column=student_id&currentpage=<%=currentpage%>&order_by=first_name&sorting_order=DESC">   <i class="fa-solid fa-down-long" ></i></a>
+            </div>
+          </th>
+          <th>
+            <p>Last Name</p>
+            <div class="thdiv">
+              <a href="/filteration/filter?column=student_id&currentpage=<%=currentpage%>&order_by=last_name&sorting_order=ASC">   <i class="fa-solid fa-up-long" ></i></a>
+              <a href="/filteration/filter?column=student_id&currentpage=<%=currentpage%>&order_by=last_name&sorting_order=DESC">   <i class="fa-solid fa-down-long" ></i></a>
+            </div>
+          </th>
+           
+          <th>
+            <p>Age</p>
+            <div class="thdiv">
+              <a href="/filteration/filter?column=student_id&currentpage=<%=currentpage%>&order_by=age&sorting_order=ASC">   <i class="fa-solid fa-up-long" ></i></a>
+              <a href="/filteration/filter?column=student_id&currentpage=<%=currentpage%>&order_by=age&sorting_order=DESC">   <i class="fa-solid fa-down-long" ></i></a>
+            </div>
+          </th>
+          <th>
+            <p>City</p>
+            <div class="thdiv">
+              <a href="/filteration/filter?column=student_id&currentpage=<%=currentpage%>&order_by=city&sorting_order=ASC">   <i class="fa-solid fa-up-long" ></i></a>
+              <a href="/filteration/filter?column=student_id&currentpage=<%=currentpage%>&order_by=city&sorting_order=DESC">   <i class="fa-solid fa-down-long" ></i></a>
+            </div>
+          </th>
+          <th>
+            <p>State</p>
+            <div class="thdiv">
+              <a href="/filteration/filter?column=student_id&currentpage=<%=currentpage%>&order_by=state&sorting_order=ASC">   <i class="fa-solid fa-up-long" ></i></a>
+              <a href="/filteration/filter?column=student_id&currentpage=<%=currentpage%>&order_by=state&sorting_order=DESC">   <i class="fa-solid fa-down-long" ></i></a>
+            </div>
+          </th>
+          <th>
+            <p>Zip Code/p>
+            <div class="thdiv">
+              <a href="/filteration/filter?column=student_id&currentpage=<%=currentpage%>&order_by=zip&sorting_order=ASC">   <i class="fa-solid fa-up-long" ></i></a>
+              <a href="/filteration/filter?column=student_id&currentpage=<%=currentpage%>&order_by=zip&sorting_order=DESC">   <i class="fa-solid fa-down-long" ></i></a>
+            </div>
+          </th>
+           
+          <th>
+            <p>Date of Birth</p>
+            <div class="thdiv">
+              <a href="/filter?column=student_id&currentpage=<%=currentpage%>&order_by=dob&sorting_order=ASC">   <i class="fa-solid fa-up-long" ></i></a>
+              <a href="/filter?column=student_id&currentpage=<%=currentpage%>&order_by=dob&sorting_order=DESC">   <i class="fa-solid fa-down-long" ></i></a>
+            </div>
+          </th>
+          <th>
+            <p>Alternative Number</p>
+            <div class="thdiv">
+              <a href="/filteration/filter?column=student_id&currentpage=<%=currentpage%>&order_by=alternativenumber&sorting_order=ASC">   <i class="fa-solid fa-up-long" ></i></a>
+              <a href="/filteration/filter?column=student_id&currentpage=<%=currentpage%>&order_by=alternativenumber&sorting_order=DESC">   <i class="fa-solid fa-down-long" ></i></a>
+            </div>
+          </th>
+          <th>
+            <p>Created Date</p>
+            <div class="thdiv">
+              <a href="/filteration/filter?column=student_id&currentpage=<%=currentpage%>&order_by=created_date&sorting_order=ASC">   <i class="fa-solid fa-up-long" ></i></a>
+              <a href="/filteration/filter?column=student_id&currentpage=<%=currentpage%>&order_by=created_date&sorting_order=DESC">   <i class="fa-solid fa-down-long" ></i></a>
+            </div>
+          </th>
+           
+             
+       
+       
+      
+    </tr>
+  
+  
+  <% data.forEach((item)=>{%> 
+    <form >
+  
+        <tr> 
+            
+            <td>
+                <%=item.student_id%> 
+                
+            </td>
+            
+            <td>
+                <%=item.first_name%> 
+                
+            </td>
+            <td>
+                <%=item.last_name%> 
+               
+                
+            </td>
+            <td>
+              
+              <%=item.age%> 
+            </td>
+               
+                
+            <td>
+                <%=item.city%> 
+  
+            </td>
+            
+            <td>
+                <%=item.state%> 
+  
+            </td>
+            <td>
+                <%=item.zip%> 
+  
+            </td>
+            <td>
+                <%=item.dob%> 
+  
+            </td>
+            <td>
+                <%=item.alternativenumber%> 
+  
+            </td>
+            <td>
+                <%=item.created_date%> 
+  
+            </td>
+            
+        
+            <td>
+               
+            </td>
+        </form>
+            
+  
+    </tr> 
+  
+       
+    
+    <%});%> 
+  
+    </table>
+  
+   </div>
+   <div class="belowbox">
+   
+    <div class="innerbox">
+      <% if (currentpage<=1) { %>
+        <a href="/filteration/users/?currentpage=1%>" class="disabled"><<</a>
+        <%} else { %>
+          <a href="/filteration/users/?currentpage=1%>"><<</a>
+        <% } %>
+     
+      <% if (currentpage<=1) { %>
+        <a href="/filteration/users/?currentpage=<%=currentpage-1%>" class="disabled"><</a>
+        <%} else { %>
+          <a href="/filteration/users/?currentpage=<%=currentpage-1%>"><</a>
+        <% } %>
+        
+        <button> <%=currentpage%></button>
+        <% if (currentpage>=numberofPages) { %>
+          <a href="/filteration/users/?currentpage=<%=currentpage+1%>" class="disabled" >></a>
+          <%} else { %>
+            <a href="/filteration/users/?currentpage=<%=currentpage+1%>" >></a>
+          <% } %>
+      
+
+
+
+          <% if (currentpage>=numberofPages) { %>
+            <a href="/filteration/users/?currentpage=<%=numberofPages%>" class="disabled">>></a>
+            <%} else { %>
+              <a href="/filteration/users/?currentpage=<%=numberofPages%>">>></a>
+            <% } %>
+        
+
+       
+  
+      
+
+    </div>
+  </div>
+  </div>
+</body>
+<script>
+
+const ascLink = document.getElementById("asc-link");
+      const descLink = document.getElementById("desc-link");
+  
+      ascLink.addEventListener("click", function(e) {
+      
+        this.classList.toggle("disabled");
+        descLink.classList.remove("disabled");
+      });
+  
+      descLink.addEventListener("click", function(e) {
+        
+        this.classList.toggle("disabled");
+        ascLink.classList.remove("disabled");
+      });
+</script>
+</html>
