@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+  
+      table{
+            border-collapse: collapse;
+            max-width: 1200px;
+            margin: auto;
+       
+      }
+      body{
+        margin: 0;
+        padding: 12px;
+        box-sizing: border-box;
+      }
+      .tablecont{
+      overflow-x: auto;
+      margin: 124px;
+      overflow-y: auto;
+      }
+      .tablecont{
+        width: 100%;
+        margin: 0 auto;
+        height: 600px;
+      
+      }
+      .section{
+        /* width: 100%; */
+       
+        padding: 20px 20px;
+      }
+        
+      th{
+        background-color: aqua;
+      }
+      a{
+     margin-right: 12px;
+        text-decoration: none;
+      }
+      .disabled {
+    pointer-events: none;
+    cursor: none;
+  }
+  .belowbox{
+    max-width: 400px;
+    margin: 0 auto;
+      margin-top: 13px;
+  }
+  button{
+    background-color: teal;
+    color: white;
+    font-size: 18px;
+    padding: 12px 23px;
+  }
+      tr:nth-child(even) {background-color: #f2f2f2;}
+      .drop{
+        display: flex;
+        gap:20px;
+        position: sticky;
+        top: 0;
+        left: 0;
+      }
+      #uppersearch{
+        max-width:550px;
+        margin: auto;
+        display: flex;
+        align-items: center;
+        gap:20px;
+      }
+      #uppersearch input{
+        padding: 12px;
+        
+      }
+      button{
+        cursor: pointer;
+      }
+      .showmore{
+         margin-left: 420px;
+         margin-top: 20px;
+         margin-bottom: 20px;
+        padding: 1px 2px;
+        background-color: skyblue;
+        color: black;
+        cursor: pointer;
+      }
+      #morefilter{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      #morefilter form{
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        padding: 20px;
+        margin-top: 12px;
+        margin-bottom: 12px;
+        display: flex;
+        align-items: center;
+        gap:20px;
+      }
+      #morefilter form input{
+        padding: 12px;
+      }
+      .morefilterbtn{
+      
+        padding: 10px 20px;
+        background-color: thistle;
+        color: black;
+        cursor: pointer;
+      }
+      .infotable{
+        max-width: 400px;
+        margin: auto;
+      }
+     
+    </style>
+</head>
+<body>
+
+  <div>
+    <table class="infotable">
+      <tr>
+        <th>Column</th>
+        <th>Separator</th>
+      </tr>
+      <tr>
+        <td>FirstName</td>
+        <td>_</td>
+      </tr>
+      <tr>
+        <td>LastName</td>
+        <td>^</td>
+      </tr>
+      <tr>
+        <td>Email</td>
+        <td>$</td>
+      </tr>
+      <tr>
+        <td>Designation</td>
+        <td>}</td>
+      </tr>
+      <tr>
+        <td>PhoneNumber</td>
+        <td>{</td>
+      </tr>
+      <tr>
+        <td>City</td>
+        <td>:</td>
+      </tr>
+    </table>
+  </div>
+
+<div id="morefilter">
+    <form method="post" action="/delimeter/getStudentAttendence">
+       <input type="text" name="Fieldname">
+      <button class="morefilterbtn" type="submit" onclick="handlemore()">Go</button>
+    
+    </form>
+</div>
+
+
+
+
+    <table cellpadding="19">
+        <tr style="position: sticky; top: 0; left: 0;">
+          <th>Applicant Id</th>
+          <th> First Name</th>
+          <th>LastName</th>
+          <th>Designation</th>
+          <th>Email</th>
+          <th>Phone Number</th>
+          <th>City</th>
+        
+        
+      </tr>
+    
+    
+    <% data.forEach((item)=>{%> 
+      <form >
+    
+          <tr> 
+              
+              <td>
+                  <%=item.APPLICANTID%> 
+                  
+              </td>
+                 
+                  
+              <td>
+                  <%=item.FIRST_NAME%> 
+    
+              </td>
+              
+              <td>
+                  <%=item.LAST_NAME%> 
+    
+              </td>
+              
+              <td>
+                  <%=item.DESIGNATION%> 
+    
+              </td>
+              <td>
+                  <%=item.EMAIL%> 
+    
+              </td>
+              <td>
+                  <%=item.PHONE_NUMBER%> 
+    
+              </td>
+              <td>
+                  <%=item.CITY%> 
+    
+              </td>
+            
+          </form>
+              
+    
+      </tr> 
+    
+         
+      
+      <%});%> 
+    
+      </table>
+
+
+     
+<script>
+  
+  function togglefunc(){
+    var div = document.getElementById('morefilter');
+    if (div.style.display !== 'none') {
+      div.style.display = 'none';
+    }
+    else {
+      div.style.display = 'block';
+    }
+}
+
+
+  
+  
+
+
+
+</script>
+</body>
+</html>
