@@ -3,6 +3,7 @@ const app=express();
 const path=require("path");
 const authenticationroute=require("./routes/authentication.js");
 const userRoute=require("./routes/userRoute.js");
+const paginationRoute=require("./routes/task_5Route.js");
 const jstaskRoute=require("./routes/jstaskRoute.js");
 var cookieParser = require('cookie-parser');
 const dotenv=require("dotenv");
@@ -19,7 +20,8 @@ app.use(cookieParser());
 
 app.use(authenticationroute);
 app.use(userRoute);
-app.use(jstaskRoute)
+app.use(jstaskRoute);
+app.use('/pagination',paginationRoute);
 app.use((err,req,res,next)=>{
     
      const statuscode=err.statusCode;

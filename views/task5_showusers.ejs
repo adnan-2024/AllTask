@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+  
+    table{
+          border-collapse: collapse;
+       
+       margin: 0 auto;
+       height: 500px;
+    }
+    body{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    .tablecont{
+    overflow-x: auto;
+    margin: 124px;
+    overflow-y: auto;
+    }
+    .tablecont{
+      width: 100%;
+      margin: 0 auto;
+      height: 800px;
+    
+    }
+    .section{
+      /* width: 100%; */
+     
+      padding: 20px 20px;
+    }
+      
+    th{
+      background-color: aqua;
+    }
+    a{
+   margin-right: 12px;
+      text-decoration: none;
+    }
+    .disabled {
+  pointer-events: none;
+  cursor: none;
+}
+.belowbox{
+  max-width: 400px;
+  margin: 0 auto;
+  display: flex;
+  gap: 120px;
+    margin-top: 13px;
+}
+.innerbox{
+    display: flex;
+    gap:12px;
+    align-items: center;
+    margin-top:12px;
+}
+button{
+  background-color: teal;
+  border-radius: 12px;
+  color: white;
+  font-size: 18px;
+  padding: 12px 23px;
+}
+    tr:nth-child(even) {background-color: #f2f2f2;}
+  </style>
+</head>
+<body>
+  <div class="section">
+
+  
+  <div class="tablecont">
+    <table cellpadding="12">
+      <tr style="position: sticky; top: 0; left: 0;">
+        <th>Student Id</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Age</th>
+        <th>City</th>
+        <th>State</th>
+        <th>Date of Birth</th>
+        <th>Alternative Number</th>
+      
+      
+    </tr>
+  
+  
+  <% data.forEach((item)=>{%> 
+    <form action="/single-users/<%=item.id%>" method="post">
+  
+        <tr> 
+            
+            <td>
+                <%=item.student_id%> 
+                
+            </td>
+            
+            <td>
+                <%=item.first_name%> 
+                
+            </td>
+            <td>
+                <%=item.last_name%> 
+               
+                
+            </td>
+            <td>
+              
+              <%=item.age%> 
+            </td>
+               
+                
+            <td>
+                <%=item.city%> 
+  
+            </td>
+            
+            <td>
+                <%=item.state%> 
+  
+            </td>
+            
+            <td>
+                <%=item.alternativenumber%> 
+  
+            </td>
+            <td>
+                <%=item.created_date%> 
+  
+            </td>
+            
+        
+            <td>
+               
+            </td>
+        </form>
+            
+  
+    </tr> 
+  
+       
+    
+    <%});%> 
+  
+    </table>
+  
+   </div>
+
+    <div class="belowbox">
+   
+      <div class="innerbox">
+        <% if (currentpage<=1) { %>
+          <a href="/pagination/users/?currentpage=1%>" class="disabled"><<</a>
+          <%} else { %>
+            <a href="/pagination/users/?currentpage=1%>"><</a>
+          <% } %>
+       
+        <% if (currentpage<=1) { %>
+          <a href="/pagination/users/?currentpage=<%=currentpage-1%>" class="disabled"><</a>
+          <%} else { %>
+            <a href="/pagination/users/?currentpage=<%=currentpage-1%>"><</a>
+          <% } %>
+          
+          <button> <%=currentpage%></button>
+          <% if (currentpage>=numberofPages) { %>
+            <a href="/pagination/users/?currentpage=<%=currentpage+1%>" class="disabled" >></a>
+            <%} else { %>
+              <a href="/pagination/users/?currentpage=<%=currentpage+1%>" >></a>
+            <% } %>
+        
+
+
+
+            <% if (currentpage>=numberofPages) { %>
+              <a href="/pagination/users/?currentpage=<%=numberofPages%>" class="disabled">>></a>
+              <%} else { %>
+                <a href="/pagination/users/?currentpage=<%=numberofPages%>">>></a>
+              <% } %>
+          
+  
+         
+    
+        
+
+      </div>
+    </div>
+  </div>
+</body>
+</html>
