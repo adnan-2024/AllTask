@@ -9,6 +9,7 @@ const task7Route=require("./routes/task7Route.js");
 const task8Route=require("./routes/task8Route.js");
 const task9Route=require("./routes/task9Route.js");
 const task10Route=require("./routes/task10route.js");
+const wireframesRoute=require("./routes/wireframesRoute.js");
 const jstaskRoute=require("./routes/jstaskRoute.js");
 var cookieParser = require('cookie-parser');
 const dotenv=require("dotenv");
@@ -18,6 +19,7 @@ dotenv.config();
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+app.use(express.static(path.join(__dirname,'public')))
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
@@ -32,6 +34,8 @@ app.use('/task7',task7Route);
 app.use('/dynamicgrid',task8Route);
 app.use('/search',task9Route);
 app.use('/delimeter',task10Route);
+app.use('/webpages',wireframesRoute);
+
 app.use((err,req,res,next)=>{
     
      const statuscode=err.statusCode;
