@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .container{
+   max-width: 70%;
+      margin: 0 auto;
+      overflow-x: auto;
+       
+    }
+    input{
+        padding: 10px;
+        width: 300px;
+        overflow-x: auto;
+    }
+    .inputcontainer{
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 12px;
+       
+    }
+    .inputcontainer button{
+        padding: 10px 19px;
+        background-color: teal;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        
+    }
+    table{
+        max-width: 50%;
+       
+    }
+    th{
+        background-color: teal;
+        color: white;
+    }
+    a{
+   margin-right: 12px;
+      text-decoration: none;
+    }
+    .disabled {
+  pointer-events: none;
+  cursor: none;
+}
+.belowbox{
+  max-width: 400px;
+  margin: 0 auto;
+    margin-top: 13px;
+}
+.innerbox{
+  margin-top: 15px;
+}
+button{
+  background-color: teal;
+  color: white;
+  font-size: 18px;
+  padding: 12px 23px;
+}
+</style>
+<body>
+    
+        
+    <div class="container">
+        <div class="inputcontainer">
+            <input type="text" name="" id="inputid">
+            <button onclick="getvalue()">GO</button>
+           
+        </div>
+
+        <% if (error) { %>
+            <p style="color: red; font-size: 27px;"><%=error%></p>
+            <% } %>
+
+            <% if (result) { %>
+               <table cellpadding="12">
+
+                <tr>
+                   
+                        <% for(var k=0; k < name_of_col.length; k++) { %>
+                            <th>
+                            <%=name_of_col[k]%>
+                        </th>
+                            <% } %>
+                    
+                </tr>
+               
+              
+                
+                <% for(var i=0; i <result.length; i++) { %>
+                    
+                    <tr>
+                    <% for(var l=0; l <name_of_col.length; l++) { %>
+                        <td><%=result[i][name_of_col[l]]%></td> 
+                        <% } %>
+                    </tr>
+                
+                
+                 
+                  
+                    <% } %>
+
+               </table>
+                <% } %>
+
+                <% if (result) { %>
+                    <div class="belowbox">
+   
+                        <div class="innerbox">
+                          <a href="/dynamicgrid/?currentpage=<%=1%>"><<</a>
+                         
+                          <% if (currentpage<=1) { %>
+                            <a href="/dynamicgrid/?currentpage=<%=parseInt(currentpage)-1%>" class="disabled"><</a>
+                            <%} else { %>
+                              <a href="/dynamicgrid/?currentpage=<%=parseInt(currentpage)-1%>" ><</a>
+                            <% } %>
+                            
+                            <button> <%=currentpage%></button>
+                            <% if (currentpage>=numberofPages) { %>
+                              <a href="/dynamicgrid/?currentpage=<%=parseInt(currentpage)+1%>" class="disabled" >></a>
+                              <%} else { %>
+                                <a href="/dynamicgrid/?currentpage=<%=parseInt(currentpage)+1%>" >></a>
+                           
+                              <% } %>
+                          
+                    
+                            <a href="/dynamicgrid/?currentpage=<%=numberofPages%>">>></a>
+                      
+                          
+                    
+                        </div>
+                      </div>
+                    <% } %>
+
+    
+    <script>
+        let query="";
+        function getvalue(){
+           const query= document.getElementById("inputid").value;
+             window.location.href=`/dynamicgrid/?queryvalue=${query}`;
+        }
+      ;
+    </script>
+</body>
+</html>
