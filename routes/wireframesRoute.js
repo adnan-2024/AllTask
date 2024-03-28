@@ -8,6 +8,9 @@ router.get("/ehya",(req,res)=>{
 router.get("/awn",(req,res)=>{
     res.render("awn");
 })
+router.get("/hirex",(req,res)=>{
+    res.render("Hirex");
+})
 
 
 
