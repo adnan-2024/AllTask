@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+  #routeform{
+    width: 350px;
+    margin: 0 auto;
+    margin-bottom:30px;
+  }
+      table{
+        width:70%;
+        margin: 0 auto;
+            border-collapse: collapse;
+       
+      }
+      td{
+        text-align: center;
+      }
+      select{
+       
+       background-color: lightgray;
+        padding: 12px;
+        cursor: pointer;
+      }
+      body{
+        margin: 0;
+        padding: 12px;
+        box-sizing: border-box;
+      }
+      .tablecont{
+      overflow-x: auto;
+      margin: 124px;
+      overflow-y: auto;
+      }
+      .tablecont{
+        width: 100%;
+        margin: 0 auto;
+        height: 600px;
+      
+      }
+      .section{
+        /* width: 100%; */
+       
+        padding: 20px 20px;
+      }
+        
+      th{
+        background-color: aqua;
+      }
+      a{
+     margin-right: 12px;
+        text-decoration: none;
+      }
+      .disabled {
+    pointer-events: none;
+    cursor: none;
+  }
+  .belowbox{
+    max-width: 400px;
+    margin: 0 auto;
+      margin-top: 13px;
+  }
+  .innerbox{
+    display: flex;
+    align-items: center;
+    gap:12px;
+    margin-top: 16px;
+  }
+  button{
+    background-color: teal;
+    border-radius: 12px;
+    color: white;
+    font-size: 18px;
+    padding: 12px 23px;
+  }
+      tr:nth-child(even) {background-color: #f2f2f2;}
+      .drop{
+        display: flex;
+        gap:20px;
+        position: sticky;
+        top: 0;
+        left: 0;
+      }
+    </style>
+</head>
+<body>
+
+ 
+<form id="routeform">
+  <select name="selectedRoute" onchange="selectmonth(value)" id="selectid">
+  
+    <option value="12">December</option>
+    <option value="1">January</option>
+    
+  </select>
+
+</form>
+
+    <table cellpadding="19">
+        <tr style="position: sticky; top: 0; left: 0;">
+          <th>Student Id</th>
+          <th>Name</th>
+          <th>total_present_days</th>
+         
+          <th>Percentage Attendence</th>
+        
+        
+      </tr>
+    
+    
+    <% data.forEach((item)=>{%> 
+      <form >
+    
+          <tr> 
+              
+              <td>
+                  <%=item.student_id%> 
+                  
+              </td>
+                 
+                  
+              <td>
+                  <%=item.name%> 
+    
+              </td>
+              
+              <td>
+                  <%=item.total_present_days%> 
+    
+              </td>
+              
+              <td>
+                  <%=item.percentage_attendance%> 
+    
+              </td>
+            
+          </form>
+              
+    
+      </tr> 
+    
+         
+      
+      <%});%> 
+    
+      </table>
+
+
+      <div class="belowbox">
+   
+        <div class="innerbox">
+          <% if (currentpage<=1) { %>
+            <a href="/task7/getStudentAttendence/?currentpage=<%=1%>" class="disabled"><<</a>
+            <%} else { %>
+              <a href="/task7/getStudentAttendence/?currentpage=<%=1%>"><<</a>
+            <% } %>
+         
+         
+          <% if (currentpage<=1) { %>
+            <a href="/task7/getStudentAttendence/?currentpage=<%=parseInt(currentpage)-1%>" class="disabled"><</a>
+            <%} else { %>
+              <a href="/task7/getStudentAttendence/?currentpage=<%=parseInt(currentpage)-1%>" ><</a>
+            <% } %>
+            
+            <button> <%=currentpage%></button>
+            <% if (currentpage>=numberofPages) { %>
+              <a href="/task7/getStudentAttendence/?currentpage=<%=parseInt(currentpage)+1%>" class="disabled" >></a>
+              <%} else { %>
+                <a href="/task7/getStudentAttendence/?currentpage=<%=parseInt(currentpage)+1%>" >></a>
+           
+              <% } %>
+          
+
+              <% if (currentpage>=numberofPages) { %>
+                <a href="/task7/getStudentAttendence/?currentpage=<%=numberofPages%>" class="disabled">>></a>
+                <%} else { %>
+                  <a href="/task7/getStudentAttendence/?currentpage=<%=numberofPages%>">>></a>
+             
+                <% } %>
+            
+  
+          
+      
+          
+  
+        </div>
+      </div>
+<script>
+  
+  function selectmonth(value){
+  
+    window.location.href=`/task7/getStudentAttendence/?month=${value}`;
+
+  }
+  const selector=document.querySelector('#selectid');
+  selector.value=  <%=month%>
+
+</script>
+</body>
+</html>

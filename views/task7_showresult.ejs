@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+  
+    table{
+          border-collapse: collapse;
+       max-width: 1000px;
+       margin: 0 auto;
+       height: 900px;
+    }
+    body{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    .tablecont{
+    overflow-x: auto;
+    margin: 124px;
+    overflow-y: auto;
+    }
+    .tablecont{
+      width: 100%;
+      margin: 0 auto;
+      height: 600px;
+    
+    }
+    .section{
+      /* width: 100%; */
+     
+      padding: 20px 20px;
+    }
+      
+    th{
+      background-color: aqua;
+    }
+    a{
+   margin-right: 12px;
+      text-decoration: none;
+    }
+    .disabled {
+  pointer-events: none;
+  cursor: none;
+}
+.belowbox{
+  max-width: 400px;
+  margin: 0 auto;
+    margin-top: 13px;
+}
+button{
+  background-color: teal;
+  color: white;
+  font-size: 18px;
+  padding: 12px 23px;
+}
+    tr:nth-child(even) {background-color: #f2f2f2;}
+  </style>
+<body>
+
+    <table cellpadding="10">
+
+       
+    
+        <tr>
+            <th>Student ID</th>
+            <th>Firstname</th>
+            <th>Terminal Theory Marks</th>
+            <th>Terminal Practical Marks</th>
+            <th>Prelim Theory Marks</th>
+            <th>Prelim Practical Marks</th>
+            <th>Final Theory Marks</th>
+            <th>Final Practical Marks</th>
+            <th>Total</th>
+            <th>View</th>
+        </tr>
+        
+       
+        <% for(var i=0; i<terminaldata.length; i++) {%>
+            
+           
+              
+            <tr>
+                <td>
+                <%= terminaldata[i].student_id%>
+                </td>
+                <td>
+                    <%= terminaldata[i].name%>
+                    
+                  </td>
+                  <td>
+                    
+                    <%= terminaldata[i].terminal_theory_marks%>
+                   
+                </td>
+                <td>
+                    <%= terminaldata[i].terminal_practical_marks%>
+
+                </td>
+                <td>
+                    <%= prelimdata[i].prelim_theory_marks%>
+
+                </td>
+                <td>
+                    <%= prelimdata[i].prelim_practical_marks%>
+
+                </td>
+                <td>
+                    <%= finaldata[i].final_theory_marks%>
+
+                </td>
+                <td>
+                    <%= finaldata[i].final_practical_marks%>
+
+                </td>
+                <td>
+                         <%= terminaldata[i].terminal_theory_marks + terminaldata[i].terminal_practical_marks +prelimdata[i].prelim_theory_marks+ prelimdata[i].prelim_practical_marks+finaldata[i].final_theory_marks+finaldata[i].final_practical_marks
+                         
+                         %>
+                </td>
+                <td>
+                         <a href="/task7/getsinglestudentresult/?student_id= <%= terminaldata[i].student_id%>"">View</a>
+                </td>
+              </td>
+            </tr>
+         <% } %>
+
+ 
+    
+
+
+
+
+      
+
+
+    </table>
+    <div class="belowbox">
+   
+        <div class="innerbox">
+          <a href="/task7/getStudentResult/?currentpage=<%=1%>"><<</a>
+         
+          <% if (currentpage<=1) { %>
+            <a href="/task7/getStudentResult/?currentpage=<%=parseInt(currentpage)-1%>" class="disabled"><</a>
+            <%} else { %>
+              <a href="/task7/getStudentResult/?currentpage=<%=parseInt(currentpage)-1%>" ><</a>
+            <% } %>
+            
+            <button> <%=currentpage%></button>
+            <% if (currentpage>=numberofPages) { %>
+              <a href="/task7/getStudentResult/?currentpage=<%=parseInt(currentpage)+1%>" class="disabled" >></a>
+              <%} else { %>
+                <a href="/task7/getStudentResult/?currentpage=<%=parseInt(currentpage)+1%>" >></a>
+           
+              <% } %>
+          
+  
+            <a href="/task7/getStudentResult/?currentpage=<%=numberofPages%>">>></a>
+      
+          
+  
+        </div>
+      </div>
+</body>
+
+</html>

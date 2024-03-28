@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    table{
+        max-width: 70%;
+      
+        margin: 0 auto;
+        overflow-x: auto;
+    }
+    th{
+        background-color: aqua;
+    }
+</style>
+<body>
+    <% for(let i=0;i<6;i++){%>
+        <%totalmarks += terminaldata[i].theory_obtain_marks+ terminaldata[i].practial_obtain_marks+prelimdata[i].theory_obtain_marks+prelimdata[i].practial_obtain_marks+finaldata[i].theory_obtain_marks+finaldata[i].practial_obtain_marks%>
+                         
+        <% } %>
+   
+    <h2 style="text-align: center;">Student Name:<%=terminaldata[0].name%></h2>
+    <h2 style="text-align: center;">Student ID:<%=terminaldata[0].SID%></h2>
+    <h2 style="text-align: center;">Percentage:<%=Math.floor(totalmarks/1800*100)%>%
+    
+    
+    </h2>
+
+
+    <table cellpadding="10">
+        <tr>
+            <th>Subject Name</th>
+            <th>Terminal Practical Marks</th>
+            <th>Terminal Theory Marks</th>
+            <th>Prelim Practical Marks</th>
+            <th>Prelim Theory Marks</th>
+            <th>Final Practical Marks</th>
+            <th>Final Theory Marks</th>
+            <th>Total</th>
+         
+        </tr>
+        
+        
+   
+        <% for(var i=0; i< terminaldata.length; i++) {%>
+            <tr>
+                <td>
+                <%= terminaldata[i].subject_name%>
+                </td>
+               
+               
+                <td>
+                    <%= terminaldata[i].theory_obtain_marks%>
+
+                </td>
+                <td>
+                    <%= terminaldata[i].practial_obtain_marks%>
+
+                </td>
+                <td>
+                    <%= prelimdata[i].theory_obtain_marks%>
+
+                </td>
+                <td>
+                    <%= prelimdata[i].practial_obtain_marks%>
+
+                </td>
+                <td>
+                    <%= finaldata[i].theory_obtain_marks%>
+
+                </td>
+                <td>
+                    <%= finaldata[i].practial_obtain_marks%>
+
+                </td>
+                <td>
+                         <%= terminaldata[i].theory_obtain_marks+ terminaldata[i].practial_obtain_marks+prelimdata[i].theory_obtain_marks+prelimdata[i].practial_obtain_marks+finaldata[i].theory_obtain_marks+finaldata[i].practial_obtain_marks
+                         
+                         %>
+                </td>
+                
+              </td>
+            </tr>
+         <% } %>
+
+ 
+    
+
+
+
+
+      
+
+
+    </table>
+   
+</body>
+
+</html>
