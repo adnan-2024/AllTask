@@ -1,11 +1,12 @@
 const express = require('express');
 const router = express.Router();
 const dbCon = require('../config/db.js');
+const verifyToken=require("../utils/verifyToken")
 
 const resultPerPage=200;
 
 
-router.get('/users',(req,res)=>{
+router.get('/users',verifyToken,(req,res)=>{
   
    const q="SELECT  * FROM StudentMaster_task5 LIMIT 30000";
     dbCon.query(q,(err,data)=>{

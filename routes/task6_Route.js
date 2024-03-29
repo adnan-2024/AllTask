@@ -1,9 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const dbCon = require('../config/db.js');
+const verifyToken=require("../utils/verifyToken")
 
 let resultperpage=200
-router.get('/filter',(req,res)=>{
+router.get('/filter',verifyToken,(req,res)=>{
    
     dbCon.query("SELECT  * FROM StudentMaster_task5 LIMIT 30000", (err, result) => {
         if (err) throw err;
@@ -19,7 +20,7 @@ router.get('/filter',(req,res)=>{
       });
 
 })
-router.get("/users",(req,res)=>{
+router.get("/users",verifyToken,(req,res)=>{
     dbCon.query("SELECT  * FROM StudentMaster_task5 LIMIT 30000", (err, result) => {
         
         if (err) throw err;

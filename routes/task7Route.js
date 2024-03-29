@@ -1,11 +1,12 @@
 const express = require('express');
 const router = express.Router();
 const dbCon = require('../config/db.js');
+const verifyToken=require("../utils/verifyToken")
 
 let resultperpage=10;
 
 
-router.get('/getStudentAttendence',(req,res)=>{
+router.get('/getStudentAttendence',verifyToken,(req,res)=>{
   
    var  month=req.query.month?req.query.month:12;
 
@@ -31,7 +32,7 @@ router.get('/getStudentAttendence',(req,res)=>{
   });
   
 });
-router.get('/getStudentResult',(req,res)=>{
+router.get('/getStudentResult',verifyToken,(req,res)=>{
   let query=`select COUNT(*) from StudentMaster_task6 as sm left join ExamMaster_task7 as em on sm.student_id=em.SID where exam_type="TERMINAL" group by student_id,exam_type`;
 
   dbCon.query(query,(err,resultdata)=>{
@@ -65,7 +66,7 @@ router.get('/getStudentResult',(req,res)=>{
 
 });
 
-router.get('/getsinglestudentresult',(req,res)=>{
+router.get('/getsinglestudentresult',verifyToken,(req,res)=>{
 const student_id=req.query.student_id;
 console.log(student_id);
   let query=`select * from StudentMaster_task6 as sm left join ExamMaster_task7 as em on sm.student_id=em.SID  left join SubjectMaster_task7 as subm on em.SUBID=subm.subject_id where exam_type="TERMINAL"  AND student_id=${student_id}`;

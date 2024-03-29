@@ -1,13 +1,14 @@
 const express = require('express');
 const dbConn = require('../config/db.js');
+const verifyToken = require('../utils/verifyToken.js');
 const router = express.Router();
 
 
-router.get("/",(req,res)=>{
+router.get("/",verifyToken,(req,res)=>{
   
     res.render("task13_home");
 });
-router.post('/education-details',(req,res)=>{
+router.post('/education-details',verifyToken,(req,res)=>{
 console.log("Education Route is calleed");
     const {ssc_board_name,
         ssc_passing_year,
@@ -74,7 +75,7 @@ console.log("Education Route is calleed");
           
 });
 
-router.post('/basic-details', async(req, res) => {
+router.post('/basic-details',verifyToken, async(req, res) => {
     try{
         console.log("inside the Basic Details route")
         let { firstname, lastname, designation, current_address, permenant_address, email, city, zip, statedropdown, gender, number, relationdropdown, date } = req.body;
@@ -100,7 +101,7 @@ router.post('/basic-details', async(req, res) => {
     }
   });
  
-router.post('/work-experience',(req,res)=>{
+router.post('/work-experience',verifyToken,(req,res)=>{
     try{
         console.log("callled workexperience");
         let id=req.query.userid;
@@ -127,7 +128,7 @@ router.post('/work-experience',(req,res)=>{
         console.log(error);
     }
 })
-router.post('/add-language',(req,res)=>{
+router.post('/add-language',verifyToken,(req,res)=>{
     try{
         console.log("server addd language")
         let id=req.query.userid;
@@ -282,7 +283,7 @@ router.post('/add-language',(req,res)=>{
         console.log(error);
     }
 });
-router.post('/add-preference',(req,res)=>{
+router.post('/add-preference',verifyToken,(req,res)=>{
     try{
         let id=req.query.userid;
         console.log("inside preferences")
@@ -317,7 +318,7 @@ res.json({ success: true });
 
     }
 })
-router.post('/add-reference',(req,res)=>{
+router.post('/add-reference',verifyToken,(req,res)=>{
   
         
   try{
@@ -352,7 +353,7 @@ router.post('/add-reference',(req,res)=>{
 
 })
 
-router.post('/add-technology',(req,res)=>{
+router.post('/add-technology',verifyToken,(req,res)=>{
     try{
     let technologies=[];
     console.log("route is called");
@@ -425,7 +426,7 @@ router.get('/cities/:state', (req, res) => {
 
 // for get update
 
-router.get("/update",(req,res)=>{
+router.get("/update",verifyToken,(req,res)=>{
       console.log("bjbdjabdjabdjabd")
     if(req.query.applicant_id){
       let basic_detail_data;
@@ -493,7 +494,7 @@ router.get("/update",(req,res)=>{
     }
     
   });
-router.get("/mainupdate",(req,res)=>{
+router.get("/mainupdate",verifyToken,(req,res)=>{
 
     let basic_detail_data;
     let basic_detail_query=`SELECT * FROM BASIC_DETAILS `;
@@ -511,7 +512,7 @@ router.get("/mainupdate",(req,res)=>{
 
 //   for updates
 
-router.post("/update",(req,res,next)=>{
+router.post("/update",verifyToken,(req,res,next)=>{
    
 
     // FOR BASIC DETAILS

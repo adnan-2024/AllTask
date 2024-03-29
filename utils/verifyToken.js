@@ -11,7 +11,7 @@ const verifyToken=(req,res,next)=>{
         next();
     }
     catch(error){
-        return res.send("Unauthorized access")
+        return res.render("tokenerror")
         
     }
     

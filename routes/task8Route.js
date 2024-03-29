@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const dbCon = require('../config/db.js');
+const verifyToken=require("../utils/verifyToken")
 let resultperpage=10;
-router.get('/',(req,res)=>{
+router.get('/',verifyToken,(req,res)=>{
     try{
 
     if(req.query.currentpage){

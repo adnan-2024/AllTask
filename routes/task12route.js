@@ -1,12 +1,13 @@
 const express = require('express');
 const dbCon = require('../config/db.js');
+const verifyToken = require('../utils/verifyToken.js');
 const router = express.Router();
 
 
-router.get("/", (req, res) => {
+router.get("/",verifyToken, (req, res) => {
     res.render("task12_home");
 });
-router.post("/create", (req, res, next) => {
+router.post("/create",verifyToken, (req, res, next) => {
 
     try {
 
@@ -440,7 +441,7 @@ dbCon.query(preferencequery,[preferencevalues],(err,result)=>{
 });
 
 
-router.get("/update",(req,res)=>{
+router.get("/update",verifyToken,(req,res)=>{
   
   if(req.query.applicant_id){
     let basic_detail_data;

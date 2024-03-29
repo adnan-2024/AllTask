@@ -1,14 +1,15 @@
 const express = require('express');
+const verifyToken = require('../utils/verifyToken');
 const router = express.Router();
 
 
-router.get("/ehya",(req,res)=>{
+router.get("/ehya",verifyToken,(req,res)=>{
     res.render("ehya");
 })
-router.get("/awn",(req,res)=>{
+router.get("/awn",verifyToken,(req,res)=>{
     res.render("awn");
 })
-router.get("/hirex",(req,res)=>{
+router.get("/hirex",verifyToken,(req,res)=>{
     res.render("Hirex");
 })
 

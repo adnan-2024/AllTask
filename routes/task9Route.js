@@ -1,9 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const dbCon = require('../config/db.js');
+const verifyToken = require('../utils/verifyToken.js');
 let resultperpage=120;
 
-router.get('/getStudentAttendence',(req,res)=>{
+router.get('/getStudentAttendence',verifyToken,(req,res)=>{
  
     let q=`SELECT * FROM StudentMaster_task9`;
     dbCon.query(q, (err, result) => {
@@ -28,7 +29,7 @@ router.get('/getStudentAttendence',(req,res)=>{
   
 });
 // route for search
-router.post('/getStudentAttendence',(req,res)=>{
+router.post('/getStudentAttendence',verifyToken,(req,res)=>{
 
   let q=`SELECT * FROM StudentMaster_task9`;
  let search=req.body.searchstudent || "";
