@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table{
+            width:60%;
+            margin: 0 auto;
+        }
+        th{
+            background-color: teal;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <table>
+      
+
+            <tr>
+                <th>Applicant Id</th>
+                <th>First Name</th>
+                <th>Last NAme</th>
+                
+                <th>Action</th>
+            </tr>
+            <% basic_detail_data.forEach(function(student) { %>
+                
+                <tr>
+                    <td><%= student.APPLICANTID %> </td>
+                    <td><%= student.FIRST_NAME %> </td>
+                    <td><%= student.LAST_NAME %> </td>
+            <td><button onclick="callupdate()">
+                UPDATE
+            </button></td>
+        </tr>
+        <% }); %> 
+   
+
+      
+    </table>
+    <script>
+      function  callupdate(){
+        window.location.href=`/crud_ajax/update?applicant_id=1`
+      }
+    </script>
+</body>
+</html>

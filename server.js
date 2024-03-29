@@ -11,6 +11,7 @@ const task9Route=require("./routes/task9Route.js");
 const task10Route=require("./routes/task10route.js");
 const task11Route=require("./routes/task11Route.js");
 const task12Route=require("./routes/task12route.js");
+const task13Route=require("./routes/task13Route.js");
 const wireframesRoute=require("./routes/wireframesRoute.js");
 const jstaskRoute=require("./routes/jstaskRoute.js");
 var cookieParser = require('cookie-parser');
@@ -39,6 +40,7 @@ app.use('/delimeter',task10Route);
 app.use('/webpages',wireframesRoute);
 app.use('/api',task11Route);
 app.use('/crud',task12Route);
+app.use('/crud_ajax',task13Route);
 
 app.use((err,req,res,next)=>{
     
@@ -51,7 +53,9 @@ app.use((err,req,res,next)=>{
      })
   
   })
-
+app.use((req,res)=>{
+    res.render("errorpage")
+})
 
 app.listen(8800,(req,res)=>{
     console.log("Server is running on Port 8800")
