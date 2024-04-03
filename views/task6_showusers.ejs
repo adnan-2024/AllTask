@@ -84,8 +84,8 @@ button{
             <p>Student Id</p>
 
             <div class="thdiv">
-              <a id="asc-link" href="/filteration/filter?column=student_id&currentpage=<%=currentpage%>&order_by=student_id&sorting_order=ASC">   <i class="fa-solid fa-up-long" onclick="changeopacity()"></i></a>
-              <a id="desc-link" href="/filteration/filter?column=student_id&currentpage=<%=currentpage%>&order_by=student_id&sorting_order=DESC">   <i class="fa-solid fa-down-long" onclick="changeopacity()"></i></a>
+              <a id="asc-link" href="/filteration/filter?column=student_id&currentpage=<%=currentpage%>&order_by=student_id&sorting_order=ASC">   <i class="fa-solid fa-up-long" ></i></a>
+              <a id="desc-link" href="/filteration/filter?column=student_id&currentpage=<%=currentpage%>&order_by=student_id&sorting_order=DESC">   <i class="fa-solid fa-down-long"></i></a>
             </div>
           </th>
 
@@ -235,20 +235,20 @@ button{
       <% if (currentpage<=1) { %>
         <a href="/filteration/users/?currentpage=1%>" class="disabled"><<</a>
         <%} else { %>
-          <a href="/filteration/users/?currentpage=1%>"><<</a>
+          <a href="/filteration/users/?currentpage=1%>&sorting_order=<%=sorting_order%>"><<</a>
         <% } %>
      
       <% if (currentpage<=1) { %>
-        <a href="/filteration/users/?currentpage=<%=currentpage-1%>" class="disabled"><</a>
+        <a  href="/filteration/users/?currentpage=<%=currentpage-1%>" class="disabled"><</a>
         <%} else { %>
-          <a href="/filteration/users/?currentpage=<%=currentpage-1%>"><</a>
+          <a  href="/filteration/users/?currentpage=<%=currentpage-1%>&sorting_order=<%=sorting_order%>"><</a>
         <% } %>
         
         <button> <%=currentpage%></button>
         <% if (currentpage>=numberofPages) { %>
           <a href="/filteration/users/?currentpage=<%=currentpage+1%>" class="disabled" >></a>
           <%} else { %>
-            <a href="/filteration/users/?currentpage=<%=currentpage+1%>" >></a>
+            <a href="/filteration/users/?currentpage=<%=currentpage+1%>&sorting_order=<%=sorting_order%>">></a>
           <% } %>
       
 
@@ -257,7 +257,7 @@ button{
           <% if (currentpage>=numberofPages) { %>
             <a href="/filteration/users/?currentpage=<%=numberofPages%>" class="disabled">>></a>
             <%} else { %>
-              <a href="/filteration/users/?currentpage=<%=numberofPages%>">>></a>
+              <a href="/filteration/users/?currentpage=<%=numberofPages%>&sorting_order=<%=sorting_order%>">>></a>
             <% } %>
         
 
