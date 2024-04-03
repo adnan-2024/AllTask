@@ -5,13 +5,9 @@ const path=require("path");
 const userRoute=require("./routes/userRoute.js");
 
 
-
-
 var cookieParser = require('cookie-parser');
 const dotenv=require("dotenv");
 dotenv.config();
-
-
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -22,13 +18,6 @@ app.use(cookieParser());
 
 
 app.use(userRoute);
-
-
-
-
-
-
-
 
 app.use((err,req,res,next)=>{
     
