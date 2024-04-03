@@ -15,7 +15,7 @@ const loadRegistrationPage=(req,res)=>{
     }
 
 }
-const saveUser=async(req,res,next)=>{
+const saveUserDetails=async(req,res,next)=>{
     try{
         function generateSalt() {
             const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
@@ -195,4 +195,4 @@ const loggedInUser=async(req,res,next)=>{
         console.log(error);
       }
 }
-module.exports={loadRegistrationPage,saveUser,activateUser,loadLoginPage,loggedInUser}
+module.exports={loadRegistrationPage,saveUserDetails,activateUser,loadLoginPage,loggedInUser}
