@@ -4,7 +4,7 @@ const dynamicgridControllerPage=(req,res)=>{
     try{
 
         if(req.query.currentpage){
-            let query=req.cookies.query
+            let query=req.cookies.query;
             dbCon.query(query,(err,resultdata)=>{
                 const numberofRecords=resultdata.length;
                 let currentpage=req.query.currentpage?Number(req.query.currentpage):1;

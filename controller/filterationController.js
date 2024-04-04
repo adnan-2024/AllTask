@@ -33,11 +33,10 @@ const getListing=(req,res)=>{
           
          let order_by=req.query.order_by;
          let sorting_order=req.query.sorting_order;
-         
+         let query=`SELECT * FROM StudentMaster_task5 LIMIT ${offset},${resultperpage}`;
+
        
            if(typeof order_by=='undefined'){
-             sorting_order=sorting_order?sorting_order:'asc';
-             let query=`SELECT * FROM StudentMaster_task5  ORDER BY student_id ${sorting_order},first_name ${sorting_order},last_name ${sorting_order},age ${sorting_order},street ${sorting_order},city ${sorting_order},state ${sorting_order},zip ${sorting_order},dob ${sorting_order} LIMIT ${offset},${resultperpage} `
             dbCon.query(query,(err,resultdatadb)=>{
                 if(err) throw err;
     

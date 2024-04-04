@@ -99,9 +99,8 @@ const activateUser=(req,res)=>{
               return res.status(400).send('Account already activated');
             }
     
-            // Check if activation code has expired
             if (new Date() > user.activation_expires) {
-              // Handle expired activation code
+              
               dbCon.query('UPDATE users SET activation_status = 0 WHERE activation_code = ?', 
                 [activationCode],
                 (err, results) => {
@@ -113,7 +112,7 @@ const activateUser=(req,res)=>{
                 }
               );
             } else {
-              // Update activation status
+             
               dbCon.query('UPDATE users SET activation_status = 1 WHERE activation_code = ?', 
                 [activationCode],
                 (err, results) => {
