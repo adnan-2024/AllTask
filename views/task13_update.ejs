@@ -10,7 +10,6 @@
             width: 80%;
             margin: 0 auto;
             cell-spacing: 12px;
-
             border-collapse: collapse;
             border: 2px;
             box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
@@ -94,11 +93,12 @@
 
             <tr>
             <tr>
+               
                 <th>Basic Details</th>
             </tr>
             <tr>
                 <td>Firstname</td>
-                  <input type="text" name="id" hidden value="<%=basic_detail_data[0].APPLICANTID%>"/>
+                  <input type="text" name="id" id="uniqueid" hidden value="<%=basic_detail_data[0].APPLICANTID%>"/>
                 <td><input type="text" name="firstname" id="firstname" value="<%=basic_detail_data[0].FIRST_NAME%>">
                     <span class="hidden hidfirstname"></span>
                 </td>
@@ -374,7 +374,7 @@
         </table>
 
     </form>
-    <form>
+    <form id="languageknowndata">
 
         <table class="form-step" id="step4">
 
@@ -523,7 +523,7 @@
 
 
 
-    <form>
+    <form id="technologydata">
 
         <table class="form-step" id="step5">
 
@@ -707,8 +707,8 @@
     </form>
 
 
-    <form>
-        <table class="form-step" id="step6">
+    <form id="referencedata">
+        <table class="form-step"   id="step6">
             <tr id="addpreferenceEntries">
             </tr>
             <% for(let item of  reference_data){%>
@@ -1270,277 +1270,57 @@ function saveworkexperience(){
 
 
  async function savepreferencedetails(){
+    let userid=document.getElementById("uniqueid").value;
     let isValid = true;
         let sapn = document.querySelectorAll("span");
         sapn.forEach((span) => {
             span.style.display = "none"
         });
 
-        // let preferedlocationdropdown=document.getElementById("preferedlocationdropdown");
-        //   let noticeperiod=document.getElementById("noticeperiod");
-        //   let departmentdropdown=document.getElementById("departmentdropdown");
-        //   let currentctc=document.getElementById("currentctc");
-        //   let expectedctc=document.getElementById("expectedctc");
-        // //    for error handling
-        // let hidpreferedlocation= document.querySelector(".hidpreferedlocation");
-        // let hidnoticeperiod=document.querySelector(".hidnoticeperiod");
-        // let hiddepartment=document.querySelector(".hiddepartment");
-        // let hidexpectedctc=document.querySelector(".hidexpectedctc");
-        // let hidcurrentctc=document.querySelector(".hidcurrentctc");
-          
-      
-        // var preferedlocationdropdownoptionSelIndex = preferedlocationdropdown.options[preferedlocationdropdown.selectedIndex].value;
-        //             if (preferedlocationdropdownoptionSelIndex == 0) {
-        //                 isvalid = false;
-        //                 errorhandler("Pleae select city", hidpreferedlocation);
-
-        //             }
-        // var departmentdropdowndropdownoptionSelIndex = departmentdropdown.options[departmentdropdown.selectedIndex].value;
-        //             if (departmentdropdowndropdownoptionSelIndex == 0) {
-                      
-        //                 isvalid = false;
-        //                 errorhandler("Pleae select Department",hiddepartment);
-
-        //             }
-        //             if(noticeperiod.value==""){
-        //                 errorhandler("enter Notice period",hidnoticeperiod);
-        //             }
-        //             if(currentctc.value==""){
-        //                 errorhandler("enter current ctc",hidcurrentctc);
-        //             }
-        //             if(expectedctc.value==""){
-        //                 errorhandler("enter expected ctc",hidexpectedctc);
-        //             }
-
+        
         if(isValid){
             
-            var myHeaders = new Headers();
-            myHeaders.append("Content-Type", "application/json");
+           var myHeaders = new Headers();
+         myHeaders.append("Content-Type", "application/json");
             
-            let response = await fetch('/crud_ajax/update?applicant_id=1', {
-                method: "POST",
-                headers: myHeaders,
-                mode: "cors",
-                cache: "default",
-                body: JSON.stringify([basicdetails,educatiodetails,workexperiencecompanydetails,workexperiencedesignationdetails,workexperiencefromdatedetails,workexperiencetodatedetails]),
-            });
-            let data = await response.json();
-            
-//             alert("Basic detaisl stored");
-
-    
-
- 
-//     let workexperienceresponse = await fetch(`/work-experience?userid=${data.userid}`, {
-// method: "POST",
-// headers: myHeaders,
-// mode: "cors",
-// cache: "default",
-// body: JSON.stringify(workexperiencedetails),
-// });
-// console.log("end workexperience")
-
-
-
-// let languagedetails=document.getElementsByName('language');
-//     let hindiread=document.getElementById('hindiread');
-//     let hindiwrite=document.getElementById('hindiwrite');
-//     let hindispeak=document.getElementById('hindispeak');
-//     let englishread=document.getElementById('englishread');
-//     let englishwrite=document.getElementById('englishwrite');
-//     let englishspeak=document.getElementById('englishspeak');
-//     let gujaratiread=document.getElementById('gujaratiread');
-//     let gujaratiwrite=document.getElementById('gujaratiwrite');
-//     let gujaratispeak=document.getElementById('gujaratispeak');
-//     if(hindiread.checked){
-//         hindiread="read";
-//     }
-//     else{
-//        hindiread="false"
-    
-//     }
-//     if(gujaratiread.checked){
-//         gujaratiread="read";
-//     }
-//     else{
-//        gujaratiread="false"
-    
-//     }
-//     if(englishread.checked){
-//         englishread="read";
-//     }
-//     else{
-//        englishread="false"
-    
-//     }
-//     if(hindiwrite.checked){
-//         hindiwrite="write";
-//     }
-//     else{
-//        hindiwrite="false"
-    
-//     }
-//     if(gujaratiwrite.checked){
-//         gujaratiwrite="write";
-//     }
-//     else{
-//        gujaratiwrite="false"
-    
-//     }
-//     if(englishwrite.checked){
-//         englishwrite="write";
-//     }
-//     else{
-//        englishwrite="false"
-    
-//     }
-//     if(hindispeak.checked){
-//         hindispeak="speak";
-//     }
-//     else{
-//        hindispeak="false"
-    
-//     }
-//     if(gujaratispeak.checked){
-//         gujaratispeak="speak";
-//     }
-//     else{
-//        gujaratispeak="false"
-    
-//     }
-//     if(englishspeak.checked){
-//         englishspeak="speak";
-//     }
-//     else{
-//        englishspeak="false"
-    
-//     }
-    
-//     languagedetails.forEach((language)=>{
-//         if(language.checked){
-//             languagedetail.push(language.value);
-
-//         }
-       
-//     })
-   
-// console.log(languagedetail);
-// console.log(hindiread);
-// console.log(hindiwrite);
-// console.log(hindispeak);
-// console.log(data.userid)
-//     let addlanguageresponse = await fetch(`/add-language?userid=${data.userid}`, {
-// method: "POST",
-// headers: myHeaders,
-// mode: "cors",
-// cache: "default",
-// body: JSON.stringify([languagedetail,hindiread,hindiwrite,hindispeak,gujaratiread,gujaratiwrite,gujaratispeak,englishread,englishwrite,englishspeak]),
-// });
-
-// alert("language detaisl stored");
-// let php,mysql,laravel,oracle;
-//                         let phpradio,laravelradio,oracleradio,mysqlradio;
-//                         let mysqlcheckbox=document.getElementById("mysql");
-//                       let phpcheckbox=document.getElementById("php");
-//                       let laravelcheckbox=document.getElementById("laravel");
-//                       let oraclecheckbox=document.getElementById("oracle");
-//                       if(phpcheckbox.checked){
-//                         php="php";
-//                       }
-//                       if(laravelcheckbox.checked){
-//                         laravel="laravel";
-//                         console.log("laravelis checked")
-//                       }
-//                       if(oraclecheckbox.checked){
-//                        oracle="oracle";
-//                       }
-//                       if(mysqlcheckbox.checked){
-//                        mysql="mysql"
-//                       }
-
-
-
-//                     let allphpradio=document.getElementsByName("phpradio");
-//                     let allmysqlradio=document.getElementsByName("mysqlradio");
-//                     let  alllaravelradio=document.getElementsByName("laravelradio");
-//                     let   alloracleradio=document.getElementsByName("oracleradio");
-//                     allphpradio.forEach((php)=>{
-                      
-//                         if(php.checked){
-//                         console.log("clicked")
-//                          phpradio=php.value;
-                        
-//                         }
-//                     })
-//                     allmysqlradio.forEach((mysql)=>{
-                      
-//                         if(mysql.checked){
-//                         console.log("clicked")
-//                          mysqlradio=mysql.value;
-                        
-//                         }
-//                     })
-//                     alllaravelradio.forEach((laravel)=>{
-                      
-//                         if(laravel.checked){
-//                         console.log("clicked")
-//                          laravelradio=laravel.value;
-                        
-//                         }
-//                     })
-//                     alloracleradio.forEach((oracle)=>{
-                      
-//                         if(oracle.checked){
-//                         console.log("clicked")
-//                          oracleradio=oracle.value;
-//                          console.log(phpradio,mysqlradio,laravelradio,oracleradio)
-                        
-//                         }
-//                     })
-                    
-//                     let addtechresponse = await fetch(`/add-technology?userid=${data.userid}`, {
-//         method: "POST",
-//         headers: myHeaders,
-//         mode: "cors",
-//         cache: "default",
-//         body: JSON.stringify([php,mysql,laravel,oracle,phpradio,mysqlradio,laravelradio,oracleradio]),
-//     });
-//     let addtechdata = await addtechresponse.json();
-
-//     if (!addtechresponse.ok) {
-//         throw new Error('Error storing basic details');
-//     }
-//         //   for inserting references values
-//         alert("technology language detaisl stored");
-//     let addreferenceresponse = await fetch(`/add-reference?userid=${data.userid}`, {
-//         method: "POST",
-//         headers: myHeaders,
-//         mode: "cors",
-//         cache: "default",
-//         body: JSON.stringify(referencesdeatils),
-//     });
-//     let addreferencedata = await addreferenceresponse.json();
-
-//     if (!addreferenceresponse .ok) {
-//         throw new Error('Error storing basic details');
-//     }
-   
-// let peferencesformdata=new FormData(document.getElementById("preferenceForm"));
-  
-// let preferenceobj=[...peferencesformdata.entries()];
-
-//     let addpreferenceresponse = await fetch(`/add-preference?userid=${data.userid}`, {
-//         method: "POST",
-//         headers: myHeaders,
-//         mode: "cors",
-//         cache: "default",
-//         body: JSON.stringify(preferenceobj)
-//     });
-//     let addpreferencedata = await addpreferenceresponse.json();
-
-//     if (!addpreferenceresponse .ok) {
-//         throw new Error('Error storing basic details');
-//     }
+          let response = await fetch(`/crud_ajax/update?applicant_id=${userid}`, {
+             method: "POST",
+            headers: myHeaders,
+            mode: "cors",
+              cache: "default",
+              body: JSON.stringify([basicdetails,educatiodetails,workexperiencecompanydetails,workexperiencedesignationdetails,workexperiencefromdatedetails,workexperiencetodatedetails]),
+             });
+     
+            let languagedetailform=document.getElementById("languageknowndata");
+        let languageFormData=new FormData(languagedetailform);
+       let response1=  await fetch(`/crud_ajax/update/languagedetails?applicant_id=${userid}`, {
+        method: 'POST',
+        headers: {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    body: new URLSearchParams(languageFormData)
+        
+           
+    });
+    let technologydataform=document.getElementById("technologydata");
+        let technologyFormData=new FormData(technologydataform);
+       let response2=  await fetch(`/crud_ajax/update/technologydata?applicant_id=${userid}`, {
+        method: 'POST',
+        headers: {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    body: new URLSearchParams(technologyFormData)
+});
+    let referencedatadataform=document.getElementById("referencedata");
+        let referenceFormData=new FormData(referencedatadataform);
+       let response3=  await fetch(`/crud_ajax/update/referencedata?applicant_id=${userid}`, {
+        method: 'POST',
+        headers: {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    body: new URLSearchParams(referenceFormData)
+});
+        
 
 
         }      

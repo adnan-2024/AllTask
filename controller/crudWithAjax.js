@@ -337,9 +337,9 @@ const saveReferencesDetails=(req,res)=>{
         
          for(let i=0;i<referenceData.length;i++){
            let referencequery="INSERT INTO REFERENCE_DETAIL(`APPLICANTID`,`NAME`,`CONTACT_NUMBER`,`RELATION`) VALUES (?)"
-           let referencequeryvalue =[id,referenceData[i].referencename,referenceData[i].referencecontactnumber,referenceData[i].referecerelation]
+           let referencequeryvalue =[id,referenceData[i].referenceName,referenceData[i].referencecontactnumber,referenceData[i].referecerelation]
            console.log(referencequeryvalue);
-           if(referenceData[i].referencename&& referenceData[i].referencecontactnumber && referenceData[i].referecerelation){
+           if(referenceData[i].referenceName&& referenceData[i].referencecontactnumber && referenceData[i].referecerelation){
         
                           dbConn.query(referencequery,[referencequeryvalue],(err,result)=>{
                                    if(err){
@@ -491,7 +491,7 @@ const listUpdateData=(req,res)=>{
             throw err;
         }
         basic_detail_data=result;
-        
+       
         res.render("task13_main",{basic_detail_data})
         
 });
@@ -540,7 +540,7 @@ let {ssc_board_name,
             master_passing_year,
             master_percentage,
         }=req.body[1];
-        console.log(req.body[2]);
+        
 
         let studentbasicdataupdatequery=`UPDATE BASIC_DETAILS SET  FIRST_NAME = '${firstname}', LAST_NAME= '${lastname}' ,DESIGNATION='${designation}',CURRENT_ADDRESS='${current_address}',PERMENANT_ADDRESS='${permenant_address}',PHONE_NUMBER='${number}',CITY='${city}',ZIP_CODE='${zip}',STATE='${statedropdown}',GENDER='${gender}',DOB='${date}',RELATIONSHIP_STATUS='${relationdropdown}' WHERE APPLICANTID=${id}`;
 
@@ -549,7 +549,7 @@ let {ssc_board_name,
 
     let bachelor_detail_update_query=`UPDATE DEGREE_DETAILS  SET COURSENAME='${bachelor_course_name}',UNIVERCITY='${bachelor_univercity}' ,PASSING_YEAR='${bachelor_passing_year}',PERCENTAGE='${bachelor_percentage}'  WHERE APPLICANTID=${id}`;
     let master_detail_update_query=`UPDATE MASTER_DETAIL  SET COURSENAME='${master_course_name}',UNIVERCITY='${master_univercity}' ,PASSING_YEAR='${master_passing_year}',PERCENTAGE='${master_percentage}'  WHERE APPLICANTID=${id}`;
-    console.log(studentbasicdataupdatequery);
+   
     dbConn.query(`${studentbasicdataupdatequery};${ssc_detail_update_query};${hsc_detail_update_query};${bachelor_detail_update_query};${master_detail_update_query}`,(err,result)=>{
         if(err){
            res.send(err);
@@ -570,98 +570,6 @@ let {ssc_board_name,
             
                let previouscompnaydata=[];
 
-//     // For language known
-//  let {language,hindiread,hindiwrite,hindispeak,englishread,englishwrite,englishspeak,gujaratiread,gujaratiwrite,gujaratispeak,}=req.body;
-//   let previouslanguagedata=[];
-
-//   let languaecnonfig=[];
- 
-  
-// if(typeof language=='object'){
-
-//     for(let i=0;i<language.length;i++){
-//         if(language[i]=="hindi"){
-//             languaecnonfig.push({language:'hindi',read:hindiread,write:hindiwrite,speak:hindispeak});
-//         }
-//         if(language[i]=="english"){
-//             languaecnonfig.push({language:'english',read:englishread,write:englishwrite,speak:englishspeak});
-//         }
-//         if(language[i]=="gujarati"){
-//             languaecnonfig.push({language:'gujarati',read:gujaratiread,write:gujaratiwrite,speak:gujaratispeak});
-//         }
-//     }
-// }
-// else if(typeof language=='string'){
-//     if(language=="hindi"){
-//         languaecnonfig.push({language:'hindi',read:hindiread,write:hindiwrite,speak:hindispeak});
-//     }
-//     if(language=="english"){
-//         languaecnonfig.push({language:'english',read:englishread,write:englishwrite,speak:englishspeak});
-//     }
-//     if(language=="gujarati"){
-//         languaecnonfig.push({language:'gujarati',read:gujaratiread,write:gujaratiwrite,speak:gujaratispeak});
-// }
-// else{
-//   console.log("Language is undefined")
-// }
-// }
-
-// for(let i=0;i<languaecnonfig.length;i++){
-//     // console.log("---------------------------------------------------->")
-//     console.log(languaecnonfig);
-//     let languageknown_query=`UPDATE LANGUAGE_KNOWN SET \`READ\`=${languaecnonfig[i].read?1:0},\`WRITE\`=${languaecnonfig[i].write?1:0},SPEAK=${languaecnonfig[i].speak?1:0} WHERE APPLICANTID=${id} AND LANGUAGE='${languaecnonfig[i].language}'`;
-//      dbConn.query(languageknown_query,(err,res)=>{
-//         if(err){
-//             throw err;
-//         }
-//         // console.log("language data inserted");
-//      })
-//  }
-
-//   for technolgy Known data
-
-// let{
-// php,mysql,laravel,oracle,phpradio,laravelradio,mysqlradio,oracleradio
-// }=req.body;
-// let previoustechnologydata=[];
-// let technologies=[];
-//      if(php){
-//    technologies.push({technology:'php',profficiency:phpradio});
-//      }
-//      if(mysql){
-//         technologies.push({technology:'mysql',profficiency:mysqlradio});
-//      }
-//      if(laravel){
-//         technologies.push({technology:'laravel',profficiency:laravelradio});
-//      }
-//      if(oracle){
-//         technologies.push({technology:'oracle',profficiency:oracleradio});
-//      }
- 
-//      for(let i=0;i<technologies.length;i++){
-        
-
-//         let technology_known_query=`UPDATE TECHNOLOGY_KNOWN SET TECHNOLOGY='${technologies[i].technology}',EFFICIENCY_LEVEL='${technologies[i].profficiency}' 
-
-
-
-
-
-
-
-
-//          WHERE APPLICANTID=${id} AND TECHNOLOGY='${technologies[i].technology}'`;
-    
-//          dbConn.query(technology_known_query,(err,res)=>{
-//             if(err){
-//                 throw err;
-//             }
-          
-//          })
-//      }
-    
-    
- 
   function workexperienceEntry(){
     return new Promise((res,rej)=>{
         dbConn.query(`SELECT * FROM WORK_EXPERIENCE WHERE APPLICANTID=${id}`,(err,result)=>{
@@ -690,7 +598,7 @@ let work_experience_query;
             else{
          
                 work_experience_query=`UPDATE WORK_EXPERIENCE SET COMANY_NAME='${companyname[i]}',DESIGNATION='${designation1[i]}',FROM_DATE='${fromdate[i]}',TO_DATE='${todate[i]}' WHERE APPLICANTID=${id} AND  COMANY_NAME='${previouscompnaydata[i]}'`;
-                console.log(work_experience_query)
+           
             }
         if(companyname[i]){
         
@@ -700,8 +608,9 @@ let work_experience_query;
                 }
             })
         }
-            
+           
         }
+        res.status(200).json({success:true})
        }
   });
  
@@ -711,4 +620,160 @@ let work_experience_query;
         
     }
 }
-module.exports={saveEducationDetails,saveBasicDetails,saveWorkExperience,saveLanguageDetails,savePreferncesDetails,saveReferencesDetails,saveTechnologyDeatils,getCitiesData,getUserData,listUpdateData,updateStudentData};
+
+const updatelanguagedeatils=(req,res)=>{
+   console.log("-----LAngyage---Detals");
+   let id=req.query.applicant_id;
+    // For language known
+ let {language,hindiread,hindiwrite,hindispeak,englishread,englishwrite,englishspeak,gujaratiread,gujaratiwrite,gujaratispeak,}=req.body;
+  let previouslanguagedata=[];
+
+  let languaecnonfig=[];
+ 
+  
+if(typeof language=='object'){
+
+    for(let i=0;i<language.length;i++){
+        if(language[i]=="hindi"){
+            languaecnonfig.push({language:'hindi',read:hindiread,write:hindiwrite,speak:hindispeak});
+        }
+        if(language[i]=="english"){
+            languaecnonfig.push({language:'english',read:englishread,write:englishwrite,speak:englishspeak});
+        }
+        if(language[i]=="gujarati"){
+            languaecnonfig.push({language:'gujarati',read:gujaratiread,write:gujaratiwrite,speak:gujaratispeak});
+        }
+    }
+}
+else if(typeof language=='string'){
+    if(language=="hindi"){
+        languaecnonfig.push({language:'hindi',read:hindiread,write:hindiwrite,speak:hindispeak});
+    }
+    if(language=="english"){
+        languaecnonfig.push({language:'english',read:englishread,write:englishwrite,speak:englishspeak});
+    }
+    if(language=="gujarati"){
+        languaecnonfig.push({language:'gujarati',read:gujaratiread,write:gujaratiwrite,speak:gujaratispeak});
+}
+else{
+  console.log("Language is undefined")
+}
+}
+
+for(let i=0;i<languaecnonfig.length;i++){
+    // console.log("---------------------------------------------------->")
+    console.log(languaecnonfig);
+    let languageknown_query=`UPDATE LANGUAGE_KNOWN SET \`READ\`=${languaecnonfig[i].read?1:0},\`WRITE\`=${languaecnonfig[i].write?1:0},SPEAK=${languaecnonfig[i].speak?1:0} WHERE APPLICANTID=${id} AND LANGUAGE='${languaecnonfig[i].language}'`;
+    console.log(languageknown_query)
+     dbConn.query(languageknown_query,(err,result)=>{
+        if(err){
+            throw err;
+        }
+      
+     })
+ }
+ res.status(200).json({success:true})
+}
+
+
+const updateTechnologyData=(req,res)=>{
+    try{
+        //   for technolgy Known data
+
+let{
+php,mysql,laravel,oracle,phpradio,laravelradio,mysqlradio,oracleradio
+}=req.body;
+let id=req.query.applicant_id;
+
+let technologies=[];
+     if(php){
+   technologies.push({technology:'php',profficiency:phpradio});
+     }
+     if(mysql){
+        technologies.push({technology:'mysql',profficiency:mysqlradio});
+     }
+     if(laravel){
+        technologies.push({technology:'laravel',profficiency:laravelradio});
+     }
+     if(oracle){
+        technologies.push({technology:'oracle',profficiency:oracleradio});
+     }
+ 
+     for(let i=0;i<technologies.length;i++){
+        
+
+        let technology_known_query=`UPDATE TECHNOLOGY_KNOWN SET TECHNOLOGY='${technologies[i].technology}',EFFICIENCY_LEVEL='${technologies[i].profficiency}' 
+         WHERE APPLICANTID=${id} AND TECHNOLOGY='${technologies[i].technology}'`;
+    
+         dbConn.query(technology_known_query,(err,resulr)=>{
+            if(err){
+                throw err;
+            }
+        
+         })
+     }
+            
+     res.status(200).json({success:true})
+    }
+    catch(error){
+
+    }
+}
+
+const updateReferenceData=(req,res)=>{
+    try{
+        console.log("Called referencedata");
+        let{referenceName,referencecontactnumber,referecerelation}=req.body
+        console.log(req.body)
+        let previousreferencedata=[];
+        let id=req.query.applicant_id;
+        function ReferenceEntry(){
+            return new Promise((res,rej)=>{
+                dbConn.query(`SELECT * FROM REFERENCE_DETAIL WHERE APPLICANTID=${id}`,(err,result)=>{
+                    if(err){
+                        throw err;
+                    }
+                   
+                    for(let i=0;i<result.length;i++){
+                        previousreferencedata.push(result[i].NAME);
+                   
+                    //    console.log("previouscompanydata",previouscompnaydata[i]);
+                    }
+                    res(true);
+                    
+                })
+            })
+          }
+          ReferenceEntry().then(()=>{
+           
+            if(!(typeof referenceName=="undefined")){
+        let work_experience_query;
+          
+                for(let i=0;i<referenceName.length;i++){
+                    if(typeof referenceName=="string"){
+                    
+                        work_experience_query=`UPDATE REFERENCE_DETAIL SET NAME='${referenceName}',CONTACT_NUMBER='${referencecontactnumber}',RELATION='${referecerelation}' WHERE APPLICANTID=${id} AND  NAME='${previousreferencedata}'`;
+                    }
+                    else{
+                 
+                        work_experience_query=`UPDATE REFERENCE_DETAIL SET NAME='${referenceName}',CONTACT_NUMBER='${referencecontactnumber}',RELATION='${referecerelation}' WHERE APPLICANTID=${id} AND  NAME='${previousreferencedata[i]}'`;
+                        console.log(work_experience_query)
+                    }
+                if(referenceName[i]){
+                
+                    dbConn.query(work_experience_query,(err,res)=>{
+                        if(err){
+                            throw err;
+                        }
+                    })
+                }
+                    
+                }
+               }
+          });
+    }
+    catch(error){
+        console.log(error)
+    }
+}
+module.exports={saveEducationDetails,saveBasicDetails,saveWorkExperience,saveLanguageDetails,savePreferncesDetails,saveReferencesDetails,saveTechnologyDeatils,getCitiesData,getUserData,listUpdateData,updateStudentData,updatelanguagedeatils,updateTechnologyData,updateReferenceData};

@@ -26,25 +26,29 @@
                 
                 <th>Action</th>
             </tr>
+
             <% basic_detail_data.forEach(function(student) { %>
-                
                 <tr>
-                    <td><%= student.APPLICANTID %> </td>
+                    <input type="text" name="id" id="uniqueid_<%= student.APPLICANTID %>" hidden value="<%= student.APPLICANTID %>"/>
+                    <td ><%= student.APPLICANTID %> </td>
                     <td><%= student.FIRST_NAME %> </td>
                     <td><%= student.LAST_NAME %> </td>
-            <td><button onclick="callupdate()">
-                UPDATE
-            </button></td>
-        </tr>
-        <% }); %> 
+                    <td><button onclick="callupdate(<%=student.APPLICANTID%>)">
+                        UPDATE
+                    </button></td>
+                </tr>
+            <% }); %>
+          
    
 
       
     </table>
     <script>
-      function  callupdate(){
-        window.location.href=`/crud_ajax/update?applicant_id=1`
-      }
+  
+    function callupdate(applicant_id) {
+    let userid = document.getElementById("uniqueid_" + applicant_id).value;
+    window.location.href = `/crud_ajax/update?applicant_id=${userid}`
+}
     </script>
 </body>
 </html>

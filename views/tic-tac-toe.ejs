@@ -135,12 +135,14 @@ function disableButtons() {
 
 function winlogic() {
     for (let i of winning_pattern) {
+        
         let [element1, element2, element3] = [
           clkbtn[i[0]].innerText,
           clkbtn[i[1]].innerText,
           clkbtn[i[2]].innerText,
         ];
 
+    
         if (element1 != "" && element2 != "" && element3 != "") {
           if (element1 === element2 && element2 === element3) {
             winFunction(element1);

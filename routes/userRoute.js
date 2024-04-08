@@ -13,7 +13,7 @@ const { getstudentAttendence, getStudentResults, getSingleResult } = require('..
 const { dynamicgridControllerPage } = require('../controller/dynamicgridController.js');
 const { loadSearchIntialData, getSearchData } = require('../controller/searchTaskController.js');
 const { loadIntialDelimiter, searchForData } = require('../controller/delimiterController.js');
-const { saveEducationDetails, saveBasicDetails, saveWorkExperience, saveLanguageDetails, savePreferncesDetails, saveReferencesDetails, saveTechnologyDeatils, getCitiesData, getUserData, listUpdateData, updateStudentData } = require('../controller/crudWithAjax.js');
+const { saveEducationDetails, saveBasicDetails, saveWorkExperience, saveLanguageDetails, savePreferncesDetails, saveReferencesDetails, saveTechnologyDeatils, getCitiesData, getUserData, listUpdateData, updateStudentData, updatelanguagedeatils, updateTechnologyData, updateReferenceData } = require('../controller/crudWithAjax.js');
 const { saveUser, getSavedData } = require('../controller/crudWithOutAjax.js');
 
 // Routes For Authentication
@@ -133,7 +133,10 @@ router.get("/crud_ajax/mainupdate",verifyToken,listUpdateData)
 
 //   for updates
 
-router.post("/crud_ajax/update",verifyToken,updateStudentData)
+router.post("/crud_ajax/update",verifyToken,updateStudentData);
+router.post("/crud_ajax/update/languagedetails",verifyToken,updatelanguagedeatils)
+router.post("/crud_ajax/update/technologydata",verifyToken,updateTechnologyData)
+router.post("/crud_ajax/update/referencedata",verifyToken,updateReferenceData)
 
 
 
